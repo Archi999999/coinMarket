@@ -1,12 +1,15 @@
-import React from 'react'
+import { StrictMode } from 'react'
 
 import { App } from '@/app/App'
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
+import '@fontsource/poppins/400.css'
+import '@fontsource/poppins/600.css'
+import '@fontsource/poppins/900.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>
+  </StrictMode>
 )
