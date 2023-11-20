@@ -3,7 +3,7 @@
 export const AllCoins = () => {
     return (
         <div>
-            All Coins
+            All Coins on page
 
         </div>
     );
