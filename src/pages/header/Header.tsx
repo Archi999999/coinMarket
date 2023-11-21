@@ -11,8 +11,8 @@ export const Header = () => {
       <Link to={'/'}><img className={s.logo} src={logo}/></Link>
     </div>
     <div className={s.headerCoins}>
-      <Typography variant={"extra_large"}>hello</Typography>
-      <Typography variant={"small_bold"}>hello</Typography>
+      <Typography variant={"extra_large"}>first coin</Typography>
+      <Typography variant={"small_bold"}>second coin</Typography>
 
     </div>
     <div className={s.headerPortfolio}> Here will be portfolio</div>
