@@ -1,38 +1,38 @@
-import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
-import {Header} from "@/pages/header/Header";
-import {AllCoins} from "@/pages/allCoins/AllCoins";
-import {OneCoin} from "@/pages/oneCoin/OneCoin";
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+import { AllCoins } from '@/pages/allCoins/AllCoins'
+import { Header } from '@/pages/header/Header'
+import { OneCoin } from '@/pages/oneCoin/OneCoin'
 
-const Layout =()=>{
-    return (
-        <>
-            <Header />
-            <Outlet/>
-        </>
-    )
+const Layout = () => {
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  )
 }
 
 const router = createBrowserRouter([
-    {
-        element: <Layout/>,
-        children: [
-            {
-                path: '/',
-                element: <AllCoins/>
-            },
-            {
-                path: '/coin',
-                element: <OneCoin/>
-            },
-            {
-                path: '*',
-                element: <div>404</div>
-            }
-        ]
-    }
+  {
+    children: [
+      {
+        element: <AllCoins />,
+        path: '/',
+      },
+      {
+        element: <OneCoin />,
+        path: '/coin',
+      },
+      {
+        element: <div>404</div>,
+        path: '*',
+      },
+    ],
+    element: <Layout />,
+  },
 ])
 
-export const Router =()=>{
-    return <RouterProvider router={router}/>
+export const Router = () => {
+  return <RouterProvider router={router} />
 }
