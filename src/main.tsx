@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
+import './styles/index.scss'
 
 import { App } from '@/app/App'
 import ReactDOM from 'react-dom/client'
 
-import './index.css'
+
 import '@fontsource/poppins/400.css'
 import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/900.css'

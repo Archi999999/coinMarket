@@ -1,14 +1,16 @@
-header{
+.header{
   width: 100%;
-  height: 100px;
-  background-color: #a5b9af;
+  height: 80px;
+  background-color: var(--color-background-black);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-
-  .logo{
-    height: 80px;
+  .headerLogo{
+    height: 100%;
+    .logo{
+      width: auto;
+      height: 100%;
+    }
   }
-
 }
 
