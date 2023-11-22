@@ -1,0 +1,10 @@
+.coinMetric {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+
+  padding: 5px 10px;
+
+  background-color: var(--color-background-black);
+  border-radius: 16px;
+}
