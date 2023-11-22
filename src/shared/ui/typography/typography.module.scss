@@ -1,21 +1,33 @@
-.extra-large, .large, .medium, .small{
+.extra-large,
+.large,
+.medium,
+.small {
   font-weight: var(--font-weight-regular);
 }
-.extra-large_bold, .large_bold, .medium_bold, .small_bold{
+
+.extra-large_bold,
+.large_bold,
+.medium_bold,
+.small_bold {
   font-weight: var(--font-weight-bold);
 }
 
-.extra-large, .extra-large_bold {
+.extra-large,
+.extra-large_bold {
   font-size: var(--font-size-xl);
 }
-.large, .large_bold{
+
+.large,
+.large_bold {
   font-size: var(--font-size-l);
 }
-.medium, .medium_bold{
+
+.medium,
+.medium_bold {
   font-size: var(--font-size-m);
 }
-.small, .small_bold{
+
+.small,
+.small_bold {
   font-size: var(--font-size-s);
 }
-
-
