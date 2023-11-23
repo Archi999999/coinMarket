@@ -1,0 +1,25 @@
+.activeHeadCell {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-button-main-500);
+
+    .sortIcon {
+      fill: var(--color-button-main-500);
+    }
+  }
+}
+
+.sortCell {
+  position: relative;
+
+  .sortIcon {
+    position: absolute;
+    top: 50%;
+    right: -1.6rem;
+    transform: translateY(-50%);
+
+    fill: var(--color-text-white);
+  }
+}

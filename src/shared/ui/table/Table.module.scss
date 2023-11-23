@@ -1,0 +1,30 @@
+$background-color: #0caf60;
+
+.root {
+  border-collapse: collapse;
+  width: 100%;
+
+  tbody tr:hover {
+    cursor: pointer;
+    background: rgba($background-color, 0.2);
+  }
+}
+
+.head {
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.headCell {
+  padding: 6px 24px;
+  text-align: left;
+}
+
+.cell {
+  padding: 6px 24px;
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  padding: 60px 0;
+}
