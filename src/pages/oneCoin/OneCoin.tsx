@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { CoinMetrics } from '@/pages/oneCoin/coinMetrics/CoinMetrics'
-import { Schedule } from '@/pages/oneCoin/schedule/Schedule'
+import { Schedule } from '@/features/schedule/Schedule'
 import { Button } from '@/shared/ui/button'
+import { CoinMetrics } from '@/widgets/coinMetrics/CoinMetrics'
 
 import s from './OneCoin.module.scss'
 
@@ -16,7 +16,7 @@ export const OneCoin = () => {
     changePercent24Hr: '-0.8101417214350335',
     id: 'bitcoin',
     marketCapUsd: '119179791817.6740161068269075',
-    maxSupply: '21000000.0000000000000000',
+    maxSupply: null,
     name: 'Bitcoin',
     priceUsd: '6931.5058555666618359',
     rank: '1',
