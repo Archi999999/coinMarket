@@ -1,0 +1,45 @@
+.button {
+  all: unset;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+
+  padding: 9px 26px;
+
+  border-radius: 16px;
+}
+
+.primary {
+  background: var(--color-button-main);
+
+  &:hover {
+    background: var(--color-button-orange);
+  }
+
+  &:active {
+    background: var(--color-button-red);
+  }
+}
+
+.secondary {
+  background: var(--color-button-gray);
+
+  &:hover {
+    background: var(--color-button-orange);
+  }
+
+  &:active {
+    background: var(--color-button-red);
+  }
+}
+
+.link {
+  color: var(--color-text-primary);
+}
+
+.fullwidth {
+  width: 100%;
+}
