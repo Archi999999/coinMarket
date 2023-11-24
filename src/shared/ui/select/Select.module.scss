@@ -1,0 +1,15 @@
+.select {
+  width: 100%;
+  padding-left: 10px;
+
+  font-size: var(--font-size-s);
+
+  appearance: none;
+  background: var(--color-background-black) url('') no-repeat calc(100% - 10px);
+  border: none;
+  border-radius: 12px;
+}
+
+.value {
+  padding-right: 10px;
+}

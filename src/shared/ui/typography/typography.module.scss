@@ -4,6 +4,7 @@
 .small {
   font-weight: var(--font-weight-regular);
 }
+
 .extra-large_bold,
 .large_bold,
 .medium_bold,
@@ -15,14 +16,17 @@
 .extra-large_bold {
   font-size: var(--font-size-xl);
 }
+
 .large,
 .large_bold {
   font-size: var(--font-size-l);
 }
+
 .medium,
 .medium_bold {
   font-size: var(--font-size-m);
 }
+
 .small,
 .small_bold {
   font-size: var(--font-size-s);

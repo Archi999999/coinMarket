@@ -1,24 +1,26 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
-import s from './Typography.module.scss'
+
+import s from './typography.module.scss'
 
 export type TypographyProps<T extends ElementType = 'span'> = {
-  children: ReactNode
   as?: T
+  children: ReactNode
+  className?: string
+
   variant?:
     | 'extra_large'
-    | 'large'
-    | 'medium'
-    | 'small'
     | 'extra_large_bold'
+    | 'large'
     | 'large_bold'
+    | 'medium'
     | 'medium_bold'
+    | 'small'
     | 'small_bold'
-
-  className?: string
 } & ComponentPropsWithoutRef<T>
 export const Typography = <T extends ElementType = 'span'>(
   props: TypographyProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>
 ) => {
-  const { variant = 'large', className, as: Component = 'span', ...rest } = props
+  const { as: Component = 'span', className, variant = 'large', ...rest } = props
+
   return <Component className={`${s[variant]} ${className}`} {...rest} />
 }
