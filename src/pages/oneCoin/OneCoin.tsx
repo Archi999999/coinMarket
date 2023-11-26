@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Schedule } from '@/features/schedule/Schedule'
+import { Diagram } from '@/features/diagram/Diagram'
 import { Button } from '@/shared/ui/button'
 import { CoinMetrics } from '@/widgets/coinMetrics/CoinMetrics'
 
@@ -29,7 +29,7 @@ export const OneCoin = () => {
   return (
     <div className={s.coinCard}>
       <CoinMetrics data={data} setValueSelect={setValueSelect} valueSelect={valueSelect} />
-      <Schedule id={data.id} value={valueSelect} />
+      <Diagram amountDays={valueSelect} id={data.id} />
       <div className={s.buttons}>
         <Button onClick={() => navigate('/')} variant={'secondary'}>
           Back
