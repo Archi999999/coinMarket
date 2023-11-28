@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
 import { Button } from '@/shared/ui/button'
-import { Typography } from '@/shared/ui/typography/Typography'
 
 import s from './Header.module.scss'
 
 import logo from './images/pngwing.com.png'
+import { Typography } from '@/shared/ui/typography'
 
 export const Header = () => {
   return (
