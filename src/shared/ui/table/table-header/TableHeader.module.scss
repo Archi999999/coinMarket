@@ -3,10 +3,10 @@
   transition: color 0.2s ease-in-out;
 
   &:hover {
-    color: var(--color-button-main-500);
+    color: var(--color-button-main);
 
     .sortIcon {
-      fill: var(--color-button-main-500);
+      fill: var(--color-button-main);
     }
   }
 }
