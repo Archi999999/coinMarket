@@ -1,43 +1,60 @@
 import { Button } from '@/shared/ui/button'
+import s from './Pagination.module.scss'
 
 type Props = {
   pageSize: number
   totalItemsCount: number
   currentPage: number
-  onPageChanged?: (p: number) => void
-  portionSize?: number
+  onPageChanged: (page: number) => void
 }
 
 export const Pagination = (props: Props) => {
-  const { currentPage, pageSize, portionSize = 7, onPageChanged, totalItemsCount } = props
+  const { currentPage, pageSize, onPageChanged, totalItemsCount } = props
+  const portionSize = 7
 
   const pagesCount = Math.ceil(totalItemsCount / pageSize)
   const pages = []
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
   }
-  let paginationItems = pages.length <= portionSize ? pages : new Array(portionSize)
-  const firstPart = [1, '...']
-  const lastPart = ['...', pagesCount]
+  let paginationItems
+  if (pages.length > portionSize) {
+    const firstPart = [1, '...']
+    const lastPart = ['...', pagesCount]
 
-  if (currentPage < 3) {
-    paginationItems = [...pages.slice(0, 5), ...lastPart]
-  } else if (currentPage >= pagesCount - 3) {
-    paginationItems = [...firstPart, ...pages.slice(pagesCount - 5, pagesCount)]
+    if (currentPage <= 4) {
+      paginationItems = [...pages.slice(0, 5), ...lastPart]
+    } else if (currentPage >= pagesCount - 3) {
+      paginationItems = [...firstPart, ...pages.slice(pagesCount - 5, pagesCount)]
+    } else {
+      paginationItems = [...firstPart, currentPage - 1, currentPage, currentPage + 1, ...lastPart]
+    }
   } else {
-    paginationItems = [...firstPart, currentPage - 1, currentPage, currentPage + 1, ...lastPart]
+    paginationItems = pages
   }
 
-  const onClickButton = (p: number) => {
-    if (onPageChanged) {
-      onPageChanged(p)
+  const onClickButton = (p: number | string, index: number) => {
+    if (p === currentPage) return
+    if (typeof p === 'number') {
+      if (onPageChanged) {
+        onPageChanged(p)
+      }
+    } else {
+      if (index === 1) {
+        onPageChanged(currentPage - 2)
+      }
+      if (index === portionSize - 2) {
+        onPageChanged(currentPage + 2)
+      }
     }
   }
   return (
-    <div>
-      {paginationItems.map(el => (
+    <div className={s.pagination}>
+      {paginationItems.map((el, index) => (
         <Button
-          onClick={() => onClickButton(el)}
+          key={index}
+          className={`${s.button} ${el === currentPage && s.currentPage}`}
+          onClick={() => onClickButton(el, index)}
           variant={el === currentPage ? 'primary' : 'secondary'}
         >
           {el}{' '}
