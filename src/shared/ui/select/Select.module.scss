@@ -1,15 +1,34 @@
+.div {
+  position: relative;
+  display: flex;
+}
+
 .select {
+  cursor: pointer;
+
   width: 100%;
   padding-left: 10px;
 
   font-size: var(--font-size-s);
 
   appearance: none;
-  background: var(--color-background-black) url('') no-repeat calc(100% - 10px);
+  background: var(--color-background-black);
   border: none;
   border-radius: 12px;
 }
 
 .value {
   padding-right: 10px;
+}
+
+.arrow {
+  pointer-events: none;
+
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 15px;
 }

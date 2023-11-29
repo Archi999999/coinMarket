@@ -53,10 +53,10 @@ export const CoinMetrics: FC<Props> = ({
       </div>
       <div className={s.coinMetrics}>
         <CoinMetric name={`rank`} value={rank} />
-        <CoinMetric formatValue={supply} name={'supply'} />
-        <CoinMetric formatValue={maxSupply} name={'max supply'} />
-        <CoinMetric formatValue={marketCapUsd} name={'market cap'} />
-        <CoinMetric formatValue={priceUsd} name={'price'} prefix={'$'} />
+        <CoinMetric name={'supply'} value={supply} />
+        <CoinMetric name={'max supply'} value={maxSupply} />
+        <CoinMetric name={'market cap'} value={marketCapUsd} />
+        <CoinMetric name={'price'} prefix={'$'} value={priceUsd} />
         <Select currentValue={valueSelect} options={options} setValue={setValueSelect} />
       </div>
     </div>
