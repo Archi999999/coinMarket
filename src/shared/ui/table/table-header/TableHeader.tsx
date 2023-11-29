@@ -19,7 +19,7 @@ export type Sort = {
   key: string
 } | null
 
-type Props = Omit<
+export type TableHeaderProps = Omit<
   ComponentPropsWithoutRef<typeof Table.Head> & {
     columns: Column[]
     onSort?: (sort: Sort) => void
@@ -28,18 +28,10 @@ type Props = Omit<
   'children'
 >
 
-export const TableHeader = ({ columns, onSort, sort, ...restProps }: Props) => {
+export const TableHeader = ({ columns, onSort, sort, ...restProps }: TableHeaderProps) => {
   const handleSort = (key: string, sortable?: boolean) => () => {
     if (!onSort || !sortable) {
       return
-    }
-
-    if (sort?.key !== key) {
-      return onSort({ direction: 'asc', key })
-    }
-
-    if (sort.direction === 'desc') {
-      return onSort(null)
     }
 
     return onSort({
@@ -65,10 +57,10 @@ export const TableHeader = ({ columns, onSort, sort, ...restProps }: Props) => {
                 {sort && sort.key === key && (
                   <>
                     {sort.direction === 'asc' && (
-                      <ArrowUp className={s.sortIcon} height={'1.2rem'} width={'1.2rem'} />
+                      <ArrowDown className={s.sortIcon} height={'1.2rem'} width={'1.2rem'} />
                     )}
                     {sort.direction !== 'asc' && (
-                      <ArrowDown className={s.sortIcon} height={'1.2rem'} width={'1.2rem'} />
+                      <ArrowUp className={s.sortIcon} height={'1.2rem'} width={'1.2rem'} />
                     )}
                   </>
                 )}
