@@ -37,7 +37,7 @@ export const Header = () => {
         Here will be portfolio
       </div>
       <Modal setShowModal={setShowModal} showModal={showModal}>
-        <div>
+        <div className={s.headerModal}>
           <span>Portfolio is empty</span>
           <Button onClick={() => setShowModal(false)}>Cancel</Button>
         </div>
