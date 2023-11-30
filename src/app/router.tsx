@@ -1,8 +1,8 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import { AllCoins } from '@/pages/allCoins/AllCoins'
-import { Header } from '@/pages/header/Header'
 import { OneCoin } from '@/pages/oneCoin/OneCoin'
+import { Header } from '@/widgets/header/Header'
 
 const Layout = () => {
   return (
