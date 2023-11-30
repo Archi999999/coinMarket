@@ -10,7 +10,7 @@ import s from './Header.module.scss'
 import logo from './images/pngwing.com.png'
 
 export const Header = () => {
-  const [showModal, setShowModal] = useState<boolean>(true)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   return (
     <header className={s.header}>
