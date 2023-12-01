@@ -1,0 +1,38 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  width: 300px;
+}
+
+.input {
+  all: unset;
+
+  width: 100%;
+  padding: 19px;
+
+  font-size: var(--font-size-s);
+  color: var(--color-text-white);
+
+  background-color: var(--color-background-panel);
+  border-radius: 20px;
+}
+
+.search {
+  padding-left: 39px;
+}
+
+.number {
+  appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 10px;
+}
