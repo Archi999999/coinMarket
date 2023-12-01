@@ -1,23 +1,27 @@
 import { Button } from '@/shared/ui/button'
+
 import s from './Pagination.module.scss'
 
 type Props = {
-  pageSize: number
-  totalItemsCount: number
   currentPage: number
   onPageChanged: (page: number) => void
+  pageSize: number
+  totalItemsCount: number
 }
 
 export const Pagination = (props: Props) => {
-  const { currentPage, pageSize, onPageChanged, totalItemsCount } = props
+  const { currentPage, onPageChanged, pageSize, totalItemsCount } = props
+
   const portionSize = 7
 
   const pagesCount = Math.ceil(totalItemsCount / pageSize)
   const pages = []
+
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
   }
   let paginationItems
+
   if (pages.length > portionSize) {
     const firstPart = [1, '...']
     const lastPart = ['...', pagesCount]
@@ -34,7 +38,9 @@ export const Pagination = (props: Props) => {
   }
 
   const onClickButton = (p: number | string, index: number) => {
-    if (p === currentPage) return
+    if (p === currentPage) {
+      return
+    }
     if (typeof p === 'number') {
       if (onPageChanged) {
         onPageChanged(p)
@@ -48,12 +54,13 @@ export const Pagination = (props: Props) => {
       }
     }
   }
+
   return (
     <div className={s.pagination}>
       {paginationItems.map((el, index) => (
         <Button
-          key={index}
           className={`${s.button} ${el === currentPage && s.currentPage}`}
+          key={index}
           onClick={() => onClickButton(el, index)}
           variant={el === currentPage ? 'primary' : 'secondary'}
         >

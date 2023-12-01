@@ -1,1 +1,1 @@
-export { CoinsTable } from './coins-tabe/CoinsTable'
+export { CoinsTable } from '@/widgets/coinsTable/coinsTable/CoinsTable'

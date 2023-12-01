@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Table } from '@/shared/ui/table'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
-import { CoinData } from '@/widgets/coinsTable/coins-tabe/CoinsTable'
+import { CoinData } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 
 import s from './CoinRow.module.scss'
 
