@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
-import s from './typography.module.scss'
+import s from './Typography.module.scss'
 
 export type TypographyProps<T extends ElementType = 'span'> = {
   as?: T

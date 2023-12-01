@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Table, TableHeader, TableHeaderProps } from '@/shared/ui/table'
-import { CoinRow } from '@/widgets/coinsTable/coin-row/CoinRow'
+import { CoinRow } from '@/widgets/coinsTable/coinRow/CoinRow'
 
 const columns = [
   { key: 'rank', sortable: true, title: '#' },
