@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  div {
+    flex-direction: row;
+  }
+}
+
+.input {
+  width: 60px;
+  margin: 0 20px;
+  appearance: textfield;
+
+  label {
+    position: absolute;
+    top: -12px;
+    left: -28px;
+    width: max-content;
+  }
+
+  input {
+    text-align: center;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+    }
+  }
+}

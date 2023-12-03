@@ -18,7 +18,11 @@ export const Input: FC<Props & InputHTMLAttributes<HTMLInputElement>> = forwardR
   ) => {
     return (
       <div className={`${s.wrapper} ${className}`}>
-        {label && <label htmlFor={id}>{label}</label>}
+        {label && (
+          <label className={s.label} htmlFor={id}>
+            {label}
+          </label>
+        )}
         <input
           className={`${s.input} ${s[type]}`}
           id={id}
