@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { CoinMetric } from '@/shared/ui/coinMetric/CoinMetric'
 import { Option, Select } from '@/shared/ui/select/Select'
 
-import s from '@/pages/oneCoin/OneCoin.module.scss'
+import s from './CoinMetrics.module.scss'
 
 type Props = {
   data: {

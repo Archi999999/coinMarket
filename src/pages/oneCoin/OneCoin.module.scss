@@ -9,36 +9,7 @@
   border-radius: 25px;
 }
 
-.coinInfo {
-  display: flex;
-  gap: 20px;
-}
-
-.iconSvgName {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.name {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.coinMetrics {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-}
-
 .buttons {
   display: flex;
   justify-content: space-between;
 }
-
-// .coinMetricRow {
-//  display: flex;
-//  gap: 10px;
-// }
