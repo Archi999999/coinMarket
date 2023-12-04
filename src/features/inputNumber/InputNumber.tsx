@@ -3,7 +3,7 @@ import { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react'
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input/input'
 
-import s from './inputNumber.module.scss'
+import s from './InputNumber.module.scss'
 
 type Props = { label?: string } & InputHTMLAttributes<HTMLInputElement>
 

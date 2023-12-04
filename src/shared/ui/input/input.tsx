@@ -6,27 +6,21 @@ import s from './Input.module.scss'
 
 type Props = {
   className?: string
-  id?: string
   label?: string
-  placeholder?: string
 }
 
 export const Input: FC<Props & InputHTMLAttributes<HTMLInputElement>> = forwardRef(
-  (
-    { className, id, label, placeholder, type = 'text', ...otherProps },
-    ref: Ref<HTMLInputElement>
-  ) => {
+  ({ className, label, placeholder, type = 'text', ...otherProps }, ref: Ref<HTMLInputElement>) => {
     return (
       <div className={`${s.wrapper} ${className}`}>
         {label && (
-          <label className={s.label} htmlFor={id}>
+          <label className={s.label} htmlFor={label}>
             {label}
           </label>
         )}
         <input
           className={`${s.input} ${s[type]}`}
-          id={id}
-          placeholder={placeholder}
+          id={label}
           type={type}
           {...otherProps}
           ref={ref}
