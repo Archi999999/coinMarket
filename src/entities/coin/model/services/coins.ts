@@ -2,7 +2,7 @@ import { baseAPI } from '@/shared/api/baseAPI'
 
 export const coinsAPI = baseAPI.injectEndpoints({
   endpoints: builder => ({
-    getCoin: builder.query<CoinData, { id: string }>({
+    getCoin: builder.query<CoinResponse, { id: string }>({
       providesTags: ['Coin'],
       query: ({ id }) => ({
         method: 'GET',
@@ -24,6 +24,7 @@ export const { useGetCoinQuery, useGetCoinsQuery } = coinsAPI
 
 export type CoinData = {
   changePercent24Hr: null | string
+  explorer: string
   id: string
   marketCapUsd: string
   maxSupply: null | string
@@ -34,6 +35,11 @@ export type CoinData = {
   symbol: string
   volumeUsd24Hr: string
   vwap24Hr: string
+}
+
+export type CoinResponse = {
+  data: CoinData
+  timestamp: number
 }
 
 export type CoinsResponse = {

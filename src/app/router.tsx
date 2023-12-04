@@ -8,7 +8,11 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div
+        style={{ alignItems: 'center', display: 'flex', height: '100vh', justifyContent: 'center' }}
+      >
+        <Outlet />
+      </div>
     </>
   )
 }
@@ -22,11 +26,7 @@ const router = createBrowserRouter([
       },
       {
         element: <OneCoin />,
-        path: '/coin',
-      },
-      {
-        element: <div>Hello</div>,
-        path: `/coin/:coinId`,
+        path: '/coin/:id',
       },
       {
         element: <div>404</div>,
