@@ -2,63 +2,38 @@ import { useState } from 'react'
 
 import { useGetCoinsQuery } from '@/entities/coin/model/services/coins'
 import { Pagination } from '@/shared/ui/pagination/Pagination'
-import { Sort } from '@/shared/ui/table'
+import { Option, Select } from '@/shared/ui/select/Select'
 import { CoinsTable } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 
 import s from './AllCons.module.scss'
 
-// function reducer(
-//   state: CoinData[],
-//   action: { payload: { direction: string; key: keyof CoinData }; type: 'SORT' }
-// ) {
-//   const { direction, key } = action.payload
-//
-//   switch (action.type) {
-//     case 'SORT':
-//       return [...state].sort((a, b) => {
-//         const valueA = a[key]
-//         const valueB = b[key]
-//
-//         if (direction === 'asc') {
-//           return Number(valueA) - Number(valueB)
-//         } else if (direction === 'desc') {
-//           return Number(valueB) - Number(valueA)
-//         } else {
-//           return 0
-//         }
-//       })
-//
-//     default:
-//       return state
-//   }
-// }
+const limitOptions: Option[] = [
+  { label: '10', value: '10' },
+  { label: '20', value: '20' },
+  { label: '100', value: '100' },
+]
 
 export const AllCoins = () => {
-  const limit = 10
-
-  const [sort, setSort] = useState<Sort>({ direction: 'asc', key: 'rank' })
-
+  const [limit, setLimit] = useState(10)
   const [currentPage, setCurrenPage] = useState(1)
   const offset = (currentPage - 1) * limit
-  const coinsData = useGetCoinsQuery({ limit, offset })
-  //const [state, dispatch] = useReducer(reducer, data)
-  //const selectCoins = coinsAPI.endpoints.getCoins.select()
+  const { data: coinsData, isLoading } = useGetCoinsQuery({ limit, offset })
 
-  // useEffect(() => {
-  //   if (sort) {
-  //     dispatch({
-  //       payload: { direction: sort.direction, key: sort.key as keyof CoinData },
-  //       type: 'SORT',
-  //     })
-  //   }
-  // }, [sort])
+  if (isLoading) {
+    return <div>Loading....</div>
+  }
 
   return (
     <section className={s.root}>
       {/*<FilterCoins/>*/}
-      {coinsData?.data?.data && (
-        <CoinsTable data={coinsData.data.data} onSort={setSort} sort={sort} />
-      )}
+      <div style={{ display: 'inline-block', width: '100px' }}>
+        <Select
+          currentValue={limit.toString()}
+          options={limitOptions}
+          setValue={limit => setLimit(Number(limit))}
+        />
+      </div>
+      {coinsData?.data && <CoinsTable data={coinsData.data} />}
       <Pagination
         currentPage={currentPage}
         onPageChanged={setCurrenPage}
