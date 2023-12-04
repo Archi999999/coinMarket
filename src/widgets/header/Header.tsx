@@ -26,7 +26,7 @@ export const Header = () => {
       <div className={s.headerCoins}>
         {threePopularCoins.data?.data.map(coin => {
           return (
-            <Link className={s.coinLink} key={coin.rank} to={`/:${coin.id}`}>
+            <Link className={s.coinLink} key={coin.id} to={`/coin/${coin.id}`}>
               <div className={s.coin}>
                 <div>
                   {coin.name} ({coin.symbol}):
