@@ -14,7 +14,14 @@ type Props = {
   showAddCoinModal: boolean
 }
 export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoinModal }) => {
-  const addCoinToPortfolio = () => {}
+  const addCoinToPortfolio = () => {
+    const currentObject = localStorage.getItem('portfolio')
+
+    const addedObject = currentObject ? JSON.parse(currentObject) : []
+
+    localStorage.setItem('portfolio', JSON.stringify([...addedObject, coin]))
+    setShowAddCoinModal(false)
+  }
 
   return (
     <Modal setShowModal={setShowAddCoinModal} showModal={showAddCoinModal}>

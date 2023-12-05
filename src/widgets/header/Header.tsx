@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { Bitcoin } from '@/assets/icons/Bitcoin'
 import { useGetCoinsQuery } from '@/entities/coin/model/services/coins'
-import { Button } from '@/shared/ui/button'
-import { Modal } from '@/shared/ui/modal/Modal'
+import { ShowPortfolioModal } from '@/features/showPortfolioModal/showPortfolioModal'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 
@@ -40,12 +39,9 @@ export const Header = () => {
       <div className={s.headerPortfolio} onClick={() => setShowModal(true)}>
         <Typography variant={'medium'}>Here will be portfolio</Typography>
       </div>
-      <Modal setShowModal={setShowModal} showModal={showModal}>
-        <div className={s.headerModal}>
-          <span>Portfolio is empty</span>
-          <Button onClick={() => setShowModal(false)}>Cancel</Button>
-        </div>
-      </Modal>
+      {showModal && (
+        <ShowPortfolioModal setShowPortfolioModal={setShowModal} showPortfolioModal={showModal} />
+      )}
     </header>
   )
 }
