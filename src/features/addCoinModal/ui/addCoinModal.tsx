@@ -1,15 +1,15 @@
 import { FC } from 'react'
 
+import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { InputNumber } from '@/features/inputNumber/InputNumber'
 import { Button } from '@/shared/ui/button'
 import { Modal } from '@/shared/ui/modal'
 import { Typography } from '@/shared/ui/typography'
-import { CoinData } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 
 import s from './addCoinModal.module.scss'
 
 type Props = {
-  coin: CoinData
+  coin: CoinForModal
   setShowAddCoinModal: (showAddCoinModal: boolean) => void
   showAddCoinModal: boolean
 }
@@ -27,7 +27,7 @@ export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoin
     <Modal setShowModal={setShowAddCoinModal} showModal={showAddCoinModal}>
       <div className={s.root}>
         <Typography className={s.title} variant={'extra_large_bold'}>
-          How many <span>{coin.name}</span> coins do you want to add to your Portfolio?
+          How many <span>{coin.nameCoin}</span> coins do you want to add to your Portfolio?
         </Typography>
         <InputNumber />
         <div className={s.buttons}>

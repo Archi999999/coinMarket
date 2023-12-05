@@ -1,11 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 
+import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { Button } from '@/shared/ui/button'
 import { Modal } from '@/shared/ui/modal'
 import { Table } from '@/shared/ui/table'
 import { Typography } from '@/shared/ui/typography'
-import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
-import { CoinData } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 
 import s from './showPortfolioModal.module.scss'
 
@@ -14,7 +13,7 @@ type Props = {
   showPortfolioModal: boolean
 }
 export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortfolioModal }) => {
-  const [currentPortfolio, setCurrentPortfolio] = useState<CoinData[]>([])
+  const [currentPortfolio, setCurrentPortfolio] = useState<CoinForModal[]>([])
 
   useEffect(() => {
     const getPortfolio = localStorage.getItem('portfolio')
@@ -41,15 +40,17 @@ export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortf
                     <Table.Cell className={s.tableCell}>
                       <div className={s.coinInfo}>
                         <Typography variant={'large_bold'}>
-                          {coin.id} ({coin.symbol})
+                          {coin.nameCoin} ({coin.symbolCoin})
                         </Typography>
-                        <Typography variant={'medium'}>Amount: 1</Typography>
-                        <Typography variant={'medium'}>
-                          {abbreviateNumber(coin.priceUsd)}
+                        <Typography as={'span'} variant={'medium'}>
+                          Amount: {coin.amountCoin}
                         </Typography>
+                        <Typography variant={'medium'}>${coin.price}</Typography>
                       </div>
                     </Table.Cell>
-                    <Table.Cell>{coin.symbol}</Table.Cell>
+                    <Table.Cell>
+                      {coin.data.additionData} {coin.data.additionTime}
+                    </Table.Cell>
                     <Button>Remove</Button>
                   </Table.Row>
                 )

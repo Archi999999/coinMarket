@@ -1,6 +1,10 @@
 import { FC, useState } from 'react'
 
-import { AddCoinModal } from '@/features/addCoinModal/addCoinModal'
+import { AddCoinModal } from '@/features/addCoinModal/ui/addCoinModal'
+import {
+  CoinForModal,
+  convertToNeedFormat,
+} from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { Table } from '@/shared/ui/table'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
@@ -13,7 +17,7 @@ type Props = {
 }
 export const CoinRow: FC<Props> = ({ coin }) => {
   const [showAddCoinModal, setShowAddCoinModal] = useState<boolean>(false)
-  const [currentCoin, setCurrentCoin] = useState<CoinData>({} as CoinData)
+  const [currentCoin, setCurrentCoin] = useState<CoinForModal>({} as CoinForModal)
   const handleRowClick = (coin: CoinData) => {
     //TODO navigate details
     console.log(coin)
@@ -22,7 +26,7 @@ export const CoinRow: FC<Props> = ({ coin }) => {
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>, coin: CoinData) => {
     e.stopPropagation()
     setShowAddCoinModal(true)
-    setCurrentCoin(coin)
+    setCurrentCoin(convertToNeedFormat(coin))
   }
 
   return (
