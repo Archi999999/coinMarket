@@ -10,5 +10,5 @@ export const baseAPI = createApi({
   }),
   endpoints: () => ({}),
   reducerPath: 'baseAPI',
-  tagTypes: ['Coins', 'Coin'],
+  tagTypes: ['Coins', 'Coin', 'Header'],
 })

@@ -1,4 +1,3 @@
-import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 import { CoinData } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -8,9 +7,10 @@ export type CoinForModal = {
     additionData: string
     additionTime: string
   }
-  id: string
+  idCoin: string
+  idForModal: string
   nameCoin: string
-  price: string
+  price: number
   symbolCoin: string
 }
 export const convertToNeedFormat = (coin: CoinData): CoinForModal => {
@@ -22,9 +22,10 @@ export const convertToNeedFormat = (coin: CoinData): CoinForModal => {
       additionData: currentData.toLocaleDateString(),
       additionTime: currentData.toLocaleTimeString(),
     },
-    id: uuidv4(),
+    idCoin: coin.id,
+    idForModal: uuidv4(),
     nameCoin: coin.name,
-    price: abbreviateNumber(coin.priceUsd),
+    price: Number(coin.priceUsd),
     symbolCoin: coin.symbol,
   }
 }
