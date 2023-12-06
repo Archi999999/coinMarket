@@ -24,10 +24,19 @@ export const coinsAPI = baseAPI.injectEndpoints({
         url: `/assets`,
       }),
     }),
+    getSomeCoins: builder.query<CoinsResponse, CoinsParams>({
+      providesTags: ['Header'],
+      query: params => ({
+        method: 'GET',
+        params: params ?? {},
+        url: `/assets`,
+      }),
+    }),
   }),
 })
 
-export const { useGetCoinHistoryQuery, useGetCoinQuery, useGetCoinsQuery } = coinsAPI
+export const { useGetCoinHistoryQuery, useGetCoinQuery, useGetCoinsQuery, useGetSomeCoinsQuery } =
+  coinsAPI
 
 export type CoinData = {
   changePercent24Hr: null | string

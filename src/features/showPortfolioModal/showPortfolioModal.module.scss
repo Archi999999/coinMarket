@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+
+  width: 500px;
+  padding: 30px;
+
+  .tableRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .coinInfo {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+}

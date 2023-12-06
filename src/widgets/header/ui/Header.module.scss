@@ -58,15 +58,16 @@
   }
 
   .headerPortfolio {
-    overflow: hidden;
+    //overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 
+    width: auto;
     max-width: 380px;
     height: 70%;
     margin-right: 20px;
-    padding: 5px;
+    padding: 15px;
 
     text-align: center;
 
