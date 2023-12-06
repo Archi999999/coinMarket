@@ -7,12 +7,13 @@ import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { ShowPortfolioModal } from '@/features/showPortfolioModal/showPortfolioModal'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
+import { getPriceDifference } from '@/widgets/header/utils/getPriceDifference'
 
 import s from './Header.module.scss'
 
 export const Header = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const [totalPrice, setTotalPrice] = useState(0)
+  const [totalPrice, setTotalPrice] = useState([])
   const [needCoins, setNeedCoins] = useState('')
 
   useEffect(() => {
@@ -20,11 +21,8 @@ export const Header = () => {
 
     if (getPortfolio) {
       const currentAllObject = JSON.parse(getPortfolio)
-      const totalPrice = currentAllObject.reduce((acc: number, el: CoinForModal) => {
-        return el.price + acc
-      }, 0)
 
-      setTotalPrice(totalPrice)
+      setTotalPrice(currentAllObject)
 
       const needCoins = currentAllObject.map((el: CoinForModal) => el.idCoin)
 
@@ -32,16 +30,15 @@ export const Header = () => {
 
       setNeedCoins(set.join(','))
     }
-  }, [totalPrice])
+  }, [showModal])
 
   const threePopularCoins = useGetCoinsQuery({ limit: 3 })
 
   const requestCoins = useGetSomeCoinsQuery({ ids: needCoins })
 
-  const newTotalPrice =
-    requestCoins &&
-    requestCoins.data &&
-    requestCoins.data.data.reduce((acc, el) => Number(el.priceUsd) + acc, 0)
+  const newTotalPrice = requestCoins && requestCoins.data && requestCoins.data.data
+
+  const portfolioTitle = newTotalPrice && getPriceDifference(totalPrice, newTotalPrice)
 
   return (
     <header className={s.header}>
@@ -66,9 +63,7 @@ export const Header = () => {
         })}
       </div>
       <div className={s.headerPortfolio} onClick={() => setShowModal(true)}>
-        <Typography variant={'medium'}>
-          {abbreviateNumber(totalPrice)}$ now: {newTotalPrice && abbreviateNumber(newTotalPrice)}
-        </Typography>
+        <Typography variant={'medium'}>{portfolioTitle}</Typography>
       </div>
       {showModal && (
         <ShowPortfolioModal setShowPortfolioModal={setShowModal} showPortfolioModal={showModal} />

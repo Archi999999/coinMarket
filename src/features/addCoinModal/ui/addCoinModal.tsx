@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { InputNumber } from '@/features/inputNumber/InputNumber'
@@ -14,10 +14,13 @@ type Props = {
   showAddCoinModal: boolean
 }
 export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoinModal }) => {
+  const [coinsQuantity, setCoinsQuantity] = useState(1)
   const addCoinToPortfolio = () => {
     const currentObject = localStorage.getItem('portfolio')
 
     const addedObject = currentObject ? JSON.parse(currentObject) : []
+
+    coin.amountCoin = coinsQuantity
 
     localStorage.setItem('portfolio', JSON.stringify([...addedObject, coin]))
     setShowAddCoinModal(false)
@@ -29,7 +32,7 @@ export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoin
         <Typography className={s.title} variant={'extra_large_bold'}>
           How many <span>{coin.nameCoin}</span> coins do you want to add to your Portfolio?
         </Typography>
-        <InputNumber />
+        <InputNumber setValue={setCoinsQuantity} value={coinsQuantity} />
         <div className={s.buttons}>
           <Button onClick={addCoinToPortfolio} variant={'primary'}>
             Confirm

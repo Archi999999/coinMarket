@@ -22,7 +22,14 @@ export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortf
     if (getPortfolio) {
       setCurrentPortfolio(JSON.parse(getPortfolio))
     }
-  }, [])
+  }, [currentPortfolio])
+
+  const removePurchase = (id: string) => {
+    const withOutOnePurchase = currentPortfolio.filter(el => el.idForModal !== id)
+
+    setCurrentPortfolio(withOutOnePurchase)
+    localStorage.setItem('portfolio', JSON.stringify(withOutOnePurchase))
+  }
 
   return (
     <Modal setShowModal={setShowPortfolioModal} showModal={showPortfolioModal}>
@@ -52,7 +59,7 @@ export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortf
                     <Table.Cell>
                       {coin.data.additionData} {coin.data.additionTime}
                     </Table.Cell>
-                    <Button>Remove</Button>
+                    <Button onClick={() => removePurchase(coin.idForModal)}>Remove</Button>
                   </Table.Row>
                 )
               })}
