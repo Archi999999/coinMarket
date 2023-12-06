@@ -5,10 +5,15 @@ import { Input } from '@/shared/ui/input/input'
 
 import s from './InputNumber.module.scss'
 
-type Props = { label?: string } & InputHTMLAttributes<HTMLInputElement>
+type Props = {
+  callback: (value: number) => void
+  label?: string
+} & InputHTMLAttributes<HTMLInputElement>
 
-export const InputNumber: FC<Props> = ({ label }, props) => {
+export const InputNumber: FC<Props> = ({ callback, label }, props) => {
   const [value, setValue] = useState(0)
+
+  callback(value)
 
   const handleDecrease = () => {
     if (value >= 1) {
