@@ -1,5 +1,7 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
+import { useGetCoinHistoryQuery } from '@/entities/coin/model/services/coins'
+import { Loader } from '@/shared/ui/loader/Loader'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 import {
   Area,
@@ -19,24 +21,40 @@ type Props = {
   id: string
 }
 
-export const Diagram: FC<Props> = ({}) => {
-  const data = [
-    { date: '2022-11-23T00:00:00.000Z', priceUsd: '16485.9187904522945220', time: 1669161600000 },
-    { date: '2022-11-24T00:00:00.000Z', priceUsd: '16622.1894904812232011', time: 1669248000000 },
-    { date: '2022-11-25T00:00:00.000Z', priceUsd: '16521.7335921461074262', time: 1669334400000 },
-    { date: '2022-11-26T00:00:00.000Z', priceUsd: '16595.8634477601480042', time: 1669420800000 },
-    { date: '2022-11-27T00:00:00.000Z', priceUsd: '16583.2706419399947885', time: 1669507200000 },
-    { date: '2022-11-28T00:00:00.000Z', priceUsd: '16244.4534804249545108', time: 1669593600000 },
-    { date: '2022-11-29T00:00:00.000Z', priceUsd: '16426.6885772042469151', time: 1669680000000 },
-  ]
+export const Diagram: FC<Props> = ({ amountDays, id }) => {
+  const interval = +amountDays > 1 ? 'd1' : 'h1'
+  const endDate = useMemo(() => new Date().setMinutes(0, 0, 0).toString(), [])
+  const startDate = useMemo(
+    () => (+endDate - 86400000 * +amountDays).toString(),
+    [amountDays, endDate]
+  )
+  const {
+    data: coinHistory,
+    error,
+    isLoading,
+  } = useGetCoinHistoryQuery({
+    end: endDate,
+    id,
+    interval,
+    start: startDate,
+  })
 
-  const formattedData = data.map(el => {
+  if (isLoading) {
+    return <Loader />
+  }
+
+  if (error || !coinHistory) {
+    return <div>Error: Data not available</div>
+  }
+
+  const formattedData = coinHistory.data.map(el => {
     const date = new Date(el.date)
     const month = date.getUTCMonth() + 1
     const day = date.getUTCDate()
+    const hour = date.getHours()
 
     return {
-      date: `${day}.${month}`,
+      date: interval === 'd1' ? `${day}.${month}` : `${hour}:00`,
       priceUsd: el.priceUsd,
     }
   })
@@ -65,7 +83,9 @@ const CustomTooltip = ({ active, label, payload }: TooltipProps<any, any>) => {
   if (active && payload && payload.length) {
     return (
       <div className={s.tooltip}>
-        <p>date {label}</p>
+        <p>
+          {label.includes(':') ? 'time' : 'date'}:{label}
+        </p>
         <p>$ {abbreviateNumber(payload[0].value)}</p>
       </div>
     )

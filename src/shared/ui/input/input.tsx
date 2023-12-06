@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const Input: FC<Props & InputHTMLAttributes<HTMLInputElement>> = forwardRef(
-  ({ className, label, placeholder, type = 'text', ...otherProps }, ref: Ref<HTMLInputElement>) => {
+  ({ className, label, type = 'text', ...otherProps }, ref: Ref<HTMLInputElement>) => {
     return (
       <div className={`${s.wrapper} ${className}`}>
         {label && (

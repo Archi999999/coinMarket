@@ -9,6 +9,13 @@ export const coinsAPI = baseAPI.injectEndpoints({
         url: `/assets/${id}`,
       }),
     }),
+    getCoinHistory: builder.query<CoinHistoryResponse, CoinHistoryParams>({
+      query: ({ end, id, interval, start }) => ({
+        method: 'GET',
+        params: { end, interval, start },
+        url: `assets/${id}/history`,
+      }),
+    }),
     getCoins: builder.query<CoinsResponse, CoinsParams>({
       providesTags: ['Coins'],
       query: params => ({
@@ -20,7 +27,7 @@ export const coinsAPI = baseAPI.injectEndpoints({
   }),
 })
 
-export const { useGetCoinQuery, useGetCoinsQuery } = coinsAPI
+export const { useGetCoinHistoryQuery, useGetCoinQuery, useGetCoinsQuery } = coinsAPI
 
 export type CoinData = {
   changePercent24Hr: null | string
@@ -53,3 +60,28 @@ export type CoinsParams = {
   offset?: number
   search?: string
 } | void
+
+type CoinHistoryItemWithSupply = {
+  circulatingSupply: string
+  date: string
+  priceUsd: string
+  time: number
+}
+
+type CoinHistoryItemWithoutSupply = {
+  date: string
+  priceUsd: string
+  time: number
+}
+
+type CoinHistoryResponse = {
+  data: (CoinHistoryItemWithSupply | CoinHistoryItemWithoutSupply)[]
+  timestamp: number
+}
+
+export type CoinHistoryParams = {
+  end?: string
+  id: string
+  interval: 'd1' | 'h1' | 'h2' | 'h6' | 'h12' | 'm1' | 'm5' | 'm15' | 'm30'
+  start?: string
+}
