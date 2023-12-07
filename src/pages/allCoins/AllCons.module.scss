@@ -1,4 +1,8 @@
 .root {
-  max-width: var(--main-container-width);
+  max-width: (var(--main-container-width));
   margin: 25px auto;
+}
+
+.coinTable {
+  margin: 15px 0;
 }

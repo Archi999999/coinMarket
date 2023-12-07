@@ -14,10 +14,11 @@ const columns = [
 ]
 
 type Props = {
+  className: string
   data: CoinData[]
 } & Pick<TableHeaderProps, 'onSort' | 'sort'>
 
-export const CoinsTable: FC<Props> = ({ data, ...rest }) => {
+export const CoinsTable: FC<Props> = ({ className, data, ...rest }) => {
   const [sort, setSort] = useState<Sort>({ direction: 'asc', key: 'rank' })
   const sortCoinsData = useCallback(
     (data: CoinData[], sort: { direction: string; key: keyof CoinData }) => {
@@ -42,7 +43,7 @@ export const CoinsTable: FC<Props> = ({ data, ...rest }) => {
   }
 
   return (
-    <Table.Root>
+    <Table.Root className={className}>
       <TableHeader columns={columns} {...rest} onSort={setSort} sort={sort} />
       <Table.Body>
         {sortCoinsData(data, sort as { direction: string; key: keyof CoinData }).map(coin => (
