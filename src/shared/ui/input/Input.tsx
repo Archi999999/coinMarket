@@ -18,14 +18,16 @@ export const Input: FC<Props & InputHTMLAttributes<HTMLInputElement>> = forwardR
             {label}
           </label>
         )}
-        <input
-          className={`${s.input} ${s[type]}`}
-          id={label}
-          type={type}
-          {...otherProps}
-          ref={ref}
-        />
-        {type === 'search' && <Search className={s.icon} />}
+        <div className={s.inputWrapper}>
+          <input
+            className={`${s.input} ${s[type]}`}
+            id={label}
+            type={type}
+            {...otherProps}
+            ref={ref}
+          />
+          {type === 'search' && <Search className={s.icon} />}
+        </div>
       </div>
     )
   }

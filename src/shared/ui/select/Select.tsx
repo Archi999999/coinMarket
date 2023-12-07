@@ -10,17 +10,18 @@ export type Option = {
 }
 
 type Props = {
+  className?: string
   currentValue: string
   options: Option[]
   setValue: (value: string) => void
 }
-export const Select: FC<Props> = ({ currentValue, options, setValue }) => {
+export const Select: FC<Props> = ({ className, currentValue, options, setValue }) => {
   const onSelectHandler = (e: SyntheticEvent<HTMLSelectElement, Event>) => {
     setValue(e.currentTarget.value)
   }
 
   return (
-    <div className={s.div}>
+    <div className={`${s.div} ${className}`}>
       <select className={s.select} onChange={onSelectHandler} value={currentValue}>
         {options.map(option => (
           <option className={s.value} key={option.value} value={option.value}>

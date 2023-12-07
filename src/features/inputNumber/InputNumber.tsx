@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, InputHTMLAttributes } from 'react'
 
 import { Button } from '@/shared/ui/button'
-import { Input } from '@/shared/ui/input/input'
+import { Input } from '@/shared/ui/input'
 
 import s from './InputNumber.module.scss'
 
