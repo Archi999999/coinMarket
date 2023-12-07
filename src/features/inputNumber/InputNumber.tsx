@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react'
+import { ChangeEvent, FC, InputHTMLAttributes } from 'react'
 
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input/input'
@@ -6,27 +6,24 @@ import { Input } from '@/shared/ui/input/input'
 import s from './InputNumber.module.scss'
 
 type Props = {
-  callback: (value: number) => void
   label?: string
+  setValue: (value: number) => void
+  value: number
 } & InputHTMLAttributes<HTMLInputElement>
 
-export const InputNumber: FC<Props> = ({ callback, label }, props) => {
-  const [value, setValue] = useState(0)
-
-  callback(value)
-
+export const InputNumber: FC<Props> = ({ label, setValue, value }, props) => {
   const handleDecrease = () => {
-    if (value >= 1) {
+    if (value >= 2) {
       setValue(value - 1)
     } else {
-      setValue(0)
+      setValue(1)
     }
   }
   const handleIncrease = () => {
-    if (value >= 0) {
+    if (value <= 100) {
       setValue(value + 1)
     } else {
-      setValue(0)
+      setValue(1)
     }
   }
 
