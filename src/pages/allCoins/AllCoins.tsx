@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { useGetCoinsQuery } from '@/entities/coin/model/services/coins'
+import { Loader } from '@/shared/ui/loader/Loader'
 import { Pagination } from '@/shared/ui/pagination/Pagination'
 import { Option, Select } from '@/shared/ui/select/Select'
 import { CoinsTable } from '@/widgets/coinsTable/coinsTable/CoinsTable'
@@ -20,7 +21,7 @@ export const AllCoins = () => {
   const { data: coinsData, isLoading } = useGetCoinsQuery({ limit, offset })
 
   if (isLoading) {
-    return <div>Loading....</div>
+    return <Loader />
   }
 
   return (

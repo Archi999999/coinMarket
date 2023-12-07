@@ -1,5 +1,6 @@
 import { FC, useCallback, useState } from 'react'
 
+import { CoinData } from '@/entities/coin/model/services/coins'
 import { Sort, Table, TableHeader, TableHeaderProps } from '@/shared/ui/table'
 import { CoinRow } from '@/widgets/coinsTable/coinRow/CoinRow'
 
@@ -11,20 +12,6 @@ const columns = [
   { key: 'marketCapUsd', sortable: true, title: 'Market Cap ' },
   { key: 'volumeUsd24Hr', sortable: true, title: 'Volume(24h)' },
 ]
-
-export type CoinData = {
-  changePercent24Hr: null | string
-  id: string
-  marketCapUsd: string
-  maxSupply: null | string
-  name: string
-  priceUsd: string
-  rank: string
-  supply: string
-  symbol: string
-  volumeUsd24Hr: string
-  vwap24Hr: string
-}
 
 type Props = {
   data: CoinData[]
