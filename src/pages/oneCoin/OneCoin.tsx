@@ -27,14 +27,16 @@ export const OneCoin = () => {
   const coinData = data.data
 
   return (
-    <div className={s.coinCard}>
-      <CoinMetrics data={coinData} setValueSelect={setValueSelect} valueSelect={valueSelect} />
-      <Diagram amountDays={valueSelect} id={coinData.id} />
-      <div className={s.buttons}>
-        <Button onClick={() => navigate('/')} variant={'secondary'}>
-          Back
-        </Button>
-        <Button>Buy</Button>
+    <div className={s.container}>
+      <div className={s.coinCard}>
+        <CoinMetrics data={coinData} setValueSelect={setValueSelect} valueSelect={valueSelect} />
+        <Diagram amountDays={valueSelect} id={coinData.id} />
+        <div className={s.buttons}>
+          <Button onClick={() => navigate('/')} variant={'secondary'}>
+            Back
+          </Button>
+          <Button>Buy</Button>
+        </div>
       </div>
     </div>
   )

@@ -1,24 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useGetCoinsQuery } from '@/entities/coin/model/services/coins'
 import { Loader } from '@/shared/ui/loader/Loader'
 import { Pagination } from '@/shared/ui/pagination/Pagination'
-import { Option, Select } from '@/shared/ui/select/Select'
+import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
+import { CoinsFilters } from '@/widgets/coinsFilter'
 import { CoinsTable } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 
 import s from './AllCons.module.scss'
 
-const limitOptions: Option[] = [
-  { label: '10', value: '10' },
-  { label: '20', value: '20' },
-  { label: '100', value: '100' },
-]
-
 export const AllCoins = () => {
   const [limit, setLimit] = useState(10)
   const [currentPage, setCurrenPage] = useState(1)
+  const [search, setSearch] = useState('')
   const offset = (currentPage - 1) * limit
-  const { data: coinsData, isLoading } = useGetCoinsQuery({ limit, offset })
+  const debouncedValue = useDebounce(search)
+  const { data: coinsData, isLoading } = useGetCoinsQuery({ limit, offset, search: debouncedValue })
+
+  useEffect(() => {
+    setCurrenPage(1)
+  }, [limit, search])
 
   if (isLoading) {
     return <Loader />
@@ -26,20 +27,13 @@ export const AllCoins = () => {
 
   return (
     <section className={s.root}>
-      {/*<FilterCoins/>*/}
-      <div style={{ display: 'inline-block', width: '100px' }}>
-        <Select
-          currentValue={limit.toString()}
-          options={limitOptions}
-          setValue={limit => setLimit(Number(limit))}
-        />
-      </div>
-      {coinsData?.data && <CoinsTable data={coinsData.data} />}
+      <CoinsFilters limit={limit} onChangeSearch={setSearch} search={search} setLimit={setLimit} />
+      {coinsData?.data && <CoinsTable className={s.coinTable} data={coinsData.data} />}
       <Pagination
         currentPage={currentPage}
         onPageChanged={setCurrenPage}
         pageSize={limit}
-        totalItemsCount={2000}
+        totalItemsCount={300}
       />
     </section>
   )

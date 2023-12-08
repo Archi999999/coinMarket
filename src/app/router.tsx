@@ -8,11 +8,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <div
-        style={{ alignItems: 'center', display: 'flex', height: '100vh', justifyContent: 'center' }}
-      >
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   )
 }

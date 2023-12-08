@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+
+  .input {
+    flex: 0 1 300px;
+  }
+
+  .select {
+    flex: 0 1 100px;
+
+    select {
+      background-color: var(--color-background-panel);
+    }
+  }
+}
