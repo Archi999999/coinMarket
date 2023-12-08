@@ -1,5 +1,8 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { RootState } from '@/app/providers/store/store'
+import { portfolioSlice } from '@/entities/coin/model/slice/portfolio.slice'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { Button } from '@/shared/ui/button'
 import { Modal } from '@/shared/ui/modal'
@@ -14,52 +17,46 @@ type Props = {
   showPortfolioModal: boolean
 }
 export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortfolioModal }) => {
-  const [currentPortfolio, setCurrentPortfolio] = useState<CoinForModal[]>([])
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    const getPortfolio = localStorage.getItem('portfolio')
-
-    if (getPortfolio) {
-      setCurrentPortfolio(JSON.parse(getPortfolio))
-    }
-  }, [currentPortfolio])
+  const currentPortfolio = useSelector<RootState, CoinForModal[]>(state => state.portfolio)
 
   const removePurchase = (id: string) => {
-    const withOutOnePurchase = currentPortfolio.filter(el => el.idForModal !== id)
-
-    setCurrentPortfolio(withOutOnePurchase)
-    localStorage.setItem('portfolio', JSON.stringify(withOutOnePurchase))
+    dispatch(portfolioSlice.actions.removeCoin({ idCoin: id }))
   }
 
   return (
     <Modal setShowModal={setShowPortfolioModal} showModal={showPortfolioModal}>
       <div className={s.root}>
-        <Typography variant={'extra_large_bold'}>Your Portfolio: </Typography>
+        <Typography className={s.title} variant={'extra_large_bold'}>
+          Your Portfolio:{' '}
+        </Typography>
         {currentPortfolio.length === 0 ? (
           <Typography variant={'medium'}>
             Unfortunately, you have not purchased any coins yet
           </Typography>
         ) : (
           <Table.Root>
-            <Table.Body>
+            <Table.Body className={s.tableBody}>
               {currentPortfolio.map(coin => {
                 return (
                   <Table.Row className={s.tableRow} key={coin.idForModal}>
-                    <Table.Cell className={s.tableCell}>
-                      <div className={s.coinInfo}>
-                        <Typography variant={'large_bold'}>
-                          {coin.nameCoin} ({coin.symbolCoin})
-                        </Typography>
-                        <Typography as={'span'} variant={'medium'}>
-                          Amount: {coin.amountCoin}
-                        </Typography>
-                        <Typography variant={'medium'}>${abbreviateNumber(coin.price)}</Typography>
-                      </div>
+                    <Table.Cell className={s.coinInfo}>
+                      <Typography variant={'large_bold'}>
+                        {coin.nameCoin} ({coin.symbolCoin})
+                      </Typography>
+                      <Typography as={'span'} variant={'medium'}>
+                        Amount: {coin.amountCoin}
+                      </Typography>
+                      <Typography variant={'medium'}>${abbreviateNumber(coin.price)}</Typography>
+                    </Table.Cell>
+                    <Table.Cell className={s.data}>
+                      <Typography variant={'medium'}>{coin.data.additionData}</Typography>
+                      <Typography variant={'medium'}>{coin.data.additionTime}</Typography>
                     </Table.Cell>
                     <Table.Cell>
-                      {coin.data.additionData} {coin.data.additionTime}
+                      <Button onClick={() => removePurchase(coin.idForModal)}>Remove</Button>
                     </Table.Cell>
-                    <Button onClick={() => removePurchase(coin.idForModal)}>Remove</Button>
                   </Table.Row>
                 )
               })}

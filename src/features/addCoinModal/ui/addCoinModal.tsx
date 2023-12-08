@@ -1,5 +1,7 @@
 import { FC, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
+import { portfolioSlice } from '@/entities/coin/model/slice/portfolio.slice'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { InputNumber } from '@/features/inputNumber/InputNumber'
 import { Button } from '@/shared/ui/button'
@@ -15,14 +17,9 @@ type Props = {
 }
 export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoinModal }) => {
   const [coinsQuantity, setCoinsQuantity] = useState(1)
+  const dispatch = useDispatch()
   const addCoinToPortfolio = () => {
-    const currentObject = localStorage.getItem('portfolio')
-
-    const addedObject = currentObject ? JSON.parse(currentObject) : []
-
-    coin.amountCoin = coinsQuantity
-
-    localStorage.setItem('portfolio', JSON.stringify([...addedObject, coin]))
+    dispatch(portfolioSlice.actions.addCoin({ newCoin: { ...coin, amountCoin: coinsQuantity } }))
     setShowAddCoinModal(false)
   }
 

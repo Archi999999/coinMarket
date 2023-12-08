@@ -1,36 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { RootState } from '@/app/providers/store/store'
 import { Bitcoin } from '@/assets/icons/Bitcoin'
 import { useGetCoinsQuery, useGetSomeCoinsQuery } from '@/entities/coin/model/services/coins'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { ShowPortfolioModal } from '@/features/showPortfolioModal/showPortfolioModal'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
+import { getArrayOfUnique } from '@/widgets/header/utils/getArrayOfUnique'
 import { getPriceDifference } from '@/widgets/header/utils/getPriceDifference'
 
 import s from './Header.module.scss'
 
 export const Header = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const [totalPrice, setTotalPrice] = useState([])
-  const [needCoins, setNeedCoins] = useState('')
 
-  useEffect(() => {
-    const getPortfolio = localStorage.getItem('portfolio')
+  const totalPrice = useSelector<RootState, CoinForModal[]>(state => state.portfolio)
 
-    if (getPortfolio) {
-      const currentAllObject = JSON.parse(getPortfolio)
-
-      setTotalPrice(currentAllObject)
-
-      const needCoins = currentAllObject.map((el: CoinForModal) => el.idCoin)
-
-      const set = Array.from(new Set(needCoins))
-
-      setNeedCoins(set.join(','))
-    }
-  }, [showModal])
+  const needCoins = getArrayOfUnique(totalPrice)
 
   const threePopularCoins = useGetCoinsQuery({ limit: 3 })
 
@@ -38,7 +27,7 @@ export const Header = () => {
 
   const newTotalPrice = requestCoins && requestCoins.data && requestCoins.data.data
 
-  const portfolioTitle = newTotalPrice && getPriceDifference(totalPrice, newTotalPrice)
+  const portfolioTitle = getPriceDifference(totalPrice, newTotalPrice)
 
   return (
     <header className={s.header}>
@@ -63,7 +52,12 @@ export const Header = () => {
         })}
       </div>
       <div className={s.headerPortfolio} onClick={() => setShowModal(true)}>
-        <Typography variant={'medium'}>{portfolioTitle}</Typography>
+        <Typography as={'span'} variant={'medium'}>
+          {portfolioTitle.totalPrice}
+        </Typography>
+        <Typography as={'span'} variant={'medium'}>
+          {portfolioTitle.delta}
+        </Typography>
       </div>
       {showModal && (
         <ShowPortfolioModal setShowPortfolioModal={setShowModal} showPortfolioModal={showModal} />
