@@ -1,4 +1,4 @@
-import { CoinData } from '@/widgets/coinsTable/coinsTable/CoinsTable'
+import { CoinData } from '@/entities/coin/model/services/coins'
 import { v4 as uuidv4 } from 'uuid'
 
 export type CoinForModal = {
