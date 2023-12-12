@@ -1,5 +1,6 @@
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+import { ErrorPage } from '@/pages/404/ErrorPage'
 import { AllCoins } from '@/pages/allCoins/AllCoins'
 import { OneCoin } from '@/pages/oneCoin/OneCoin'
 import { Header } from '@/widgets/header/ui/Header'
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         path: '/coin/:id',
       },
       {
-        element: <div>404</div>,
+        element: <ErrorPage />,
         path: '*',
       },
     ],
