@@ -6,6 +6,7 @@ import { RootState } from '@/app/providers/store/store'
 import { Bitcoin } from '@/assets/icons/Bitcoin'
 import { useGetCoinsQuery, useGetSomeCoinsQuery } from '@/entities/coin/model/services/coins'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
+import { HeaderContentLoader } from '@/features/loader/HeaderContentLoader'
 import { ShowPortfolioModal } from '@/features/showPortfolioModal/showPortfolioModal'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
@@ -21,7 +22,7 @@ export const Header = () => {
 
   const needCoins = getArrayOfUnique(totalPrice)
 
-  const threePopularCoins = useGetCoinsQuery({ limit: 3 })
+  const { data: threePopularCoins, isLoading } = useGetCoinsQuery({ limit: 3 })
 
   const requestCoins = useGetSomeCoinsQuery({ ids: needCoins })
 
@@ -37,20 +38,26 @@ export const Header = () => {
           <Typography as={'h2'}>COINCHAIN</Typography>
         </Link>
       </div>
-      <div className={s.headerCoins}>
-        {threePopularCoins.data?.data.map(coin => {
-          return (
-            <Link className={s.coinLink} key={coin.id} to={`/coin/${coin.id}`}>
-              <div className={s.coin}>
-                <div>
-                  {coin.name} ({coin.symbol}):
+      {isLoading ? (
+        <div className={s.headerCoins}>
+          <HeaderContentLoader />
+        </div>
+      ) : (
+        <div className={s.headerCoins}>
+          {threePopularCoins?.data.map(coin => {
+            return (
+              <Link className={s.coinLink} key={coin.id} to={`/coin/${coin.id}`}>
+                <div className={s.coin}>
+                  <div>
+                    {coin.name} ({coin.symbol}):
+                  </div>
+                  <div>{abbreviateNumber(coin.priceUsd)}</div>
                 </div>
-                <div>{abbreviateNumber(coin.priceUsd)}</div>
-              </div>
-            </Link>
-          )
-        })}
-      </div>
+              </Link>
+            )
+          })}
+        </div>
+      )}
       <div className={s.headerPortfolio} onClick={() => setShowModal(true)}>
         <Typography as={'span'} variant={'medium'}>
           {portfolioTitle.totalPrice}

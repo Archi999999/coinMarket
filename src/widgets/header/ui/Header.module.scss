@@ -85,6 +85,10 @@
     a:last-child {
       display: none;
     }
+
+    svg:last-child {
+      display: none;
+    }
   }
 }
 
@@ -93,12 +97,20 @@
     a:not(:first-child) {
       display: none;
     }
+
+    svg:not(:first-child) {
+      display: none;
+    }
   }
 }
 
 @media screen and (width<= 480px) {
   .headerCoins {
     a {
+      display: none;
+    }
+
+    svg {
       display: none;
     }
   }
