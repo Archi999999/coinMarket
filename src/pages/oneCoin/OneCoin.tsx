@@ -5,8 +5,8 @@ import { useGetCoinQuery } from '@/entities/coin/model/services/coins'
 import { AddCoinModal } from '@/features/addCoinModal/ui/addCoinModal'
 import { convertToNeedFormat } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { Diagram } from '@/features/diagram/Diagram'
+import { OneCoinContentLoader } from '@/features/loader/OneCoinContentLoader'
 import { Button } from '@/shared/ui/button'
-import { Loader } from '@/shared/ui/loader/Loader'
 import { CoinMetrics } from '@/widgets/coinMetrics/CoinMetrics'
 
 import s from './OneCoin.module.scss'
@@ -20,7 +20,13 @@ export const OneCoin = () => {
   const { data, isLoading } = useGetCoinQuery({ id: id! })
 
   if (isLoading) {
-    return <Loader />
+    return (
+      <div className={s.container}>
+        <div className={s.coinCard}>
+          <OneCoinContentLoader />
+        </div>
+      </div>
+    )
   }
 
   if (!data) {

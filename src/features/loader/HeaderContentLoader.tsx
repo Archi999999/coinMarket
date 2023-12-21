@@ -10,7 +10,7 @@ export const HeaderContentLoader = () => {
   )
 }
 
-export const CoinLoader = () => {
+const CoinLoader = () => {
   return (
     <ContentLoader style={{ height: '80px', width: '170px' }}>
       <rect height={'20'} rx={'4'} ry={'4'} width={'60'} x={'0'} y={'30'} />
