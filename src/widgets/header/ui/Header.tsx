@@ -7,7 +7,7 @@ import { Bitcoin } from '@/assets/icons/Bitcoin'
 import { useGetCoinsQuery, useGetSomeCoinsQuery } from '@/entities/coin/model/services/coins'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { HeaderContentLoader } from '@/features/loader/HeaderContentLoader'
-import { ShowPortfolioModal } from '@/features/showPortfolioModal/showPortfolioModal'
+import { ShowWalletModal } from '@/features/showWalletModal/showWalletModal'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 import { getArrayOfUnique } from '@/widgets/header/utils/getArrayOfUnique'
@@ -28,7 +28,7 @@ export const Header = () => {
 
   const newTotalPrice = requestCoins && requestCoins.data && requestCoins.data.data
 
-  const portfolioTitle = getPriceDifference(totalPrice, newTotalPrice)
+  const walletTitle = getPriceDifference(totalPrice, newTotalPrice)
 
   return (
     <header className={s.header}>
@@ -58,16 +58,16 @@ export const Header = () => {
           })}
         </div>
       )}
-      <div className={s.headerPortfolio} onClick={() => setShowModal(true)}>
+      <div className={s.headerWallet} onClick={() => setShowModal(true)}>
         <Typography as={'span'} variant={'medium'}>
-          {portfolioTitle.totalPrice}
+          {walletTitle.totalPrice}
         </Typography>
         <Typography as={'span'} variant={'medium'}>
-          {portfolioTitle.delta}
+          {walletTitle.delta}
         </Typography>
       </div>
       {showModal && (
-        <ShowPortfolioModal setShowPortfolioModal={setShowModal} showPortfolioModal={showModal} />
+        <ShowWalletModal setShowWalletModal={setShowModal} showWalletModal={showModal} />
       )}
     </header>
   )

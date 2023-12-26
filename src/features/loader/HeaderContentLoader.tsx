@@ -12,33 +12,26 @@ export const HeaderContentLoader = () => {
   )
 }
 
-// const CoinLoader = () => {
-//   return (
-//     //<>
-//     <CoinNameLoader />
-//     //<CoinPriceLoader />
-//     //</>
-//   )
-// }
-
 const CoinLoader = () => {
   return (
     <div className={s.coinLoader}>
-      <ContentLoader style={{ height: '20', width: '110px' }}>
+      <ContentLoader
+        backgroundColor={'#12181f'}
+        foregroundColor={'#161d26'}
+        speed={1}
+        style={{ height: '20', width: '110px' }}
+      >
         <rect height={'20'} rx={'4'} ry={'4'} width={'60'} x={'0'} y={'0'} />
         <rect height={'20'} rx={'4'} ry={'4'} width={'40'} x={'70'} y={'0'} />
       </ContentLoader>
-      <ContentLoader style={{ height: '20', width: '40px' }}>
+      <ContentLoader
+        backgroundColor={'#12181f'}
+        foregroundColor={'#161d26'}
+        speed={1}
+        style={{ height: '20', width: '40px' }}
+      >
         <rect height={'20'} rx={'4'} ry={'4'} width={'30'} x={'10'} y={'0'} />
       </ContentLoader>
     </div>
   )
 }
-
-// const CoinPriceLoader = () => {
-//   return (
-//     <ContentLoader style={{ height: '20', width: '40px' }}>
-//       <rect height={'20'} rx={'4'} ry={'4'} width={'30'} x={'10'} y={'0'} />
-//     </ContentLoader>
-//   )
-// }
