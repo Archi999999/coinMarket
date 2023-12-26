@@ -23,7 +23,13 @@ export const RowLoader = () => {
 const Content = () => {
   return (
     <Table.Cell>
-      <ContentLoader height={30} width={20}>
+      <ContentLoader
+        backgroundColor={'#0b0e13'}
+        foregroundColor={'#161d26'}
+        height={30}
+        speed={1}
+        width={20}
+      >
         <rect height={20} rx={'4'} ry={'4'} width={20} x={'0'} y={'9'} />
       </ContentLoader>
     </Table.Cell>
@@ -33,7 +39,13 @@ const Content = () => {
 const Content2 = () => {
   return (
     <Table.Cell>
-      <ContentLoader height={30} width={50}>
+      <ContentLoader
+        backgroundColor={'#0b0e13'}
+        foregroundColor={'#161d26'}
+        height={30}
+        speed={1}
+        width={50}
+      >
         <rect height={20} rx={'4'} ry={'4'} width={40} x={'0'} y={'9'} />
       </ContentLoader>
     </Table.Cell>
@@ -43,7 +55,13 @@ const Content2 = () => {
 const Content3 = () => {
   return (
     <Table.Cell>
-      <ContentLoader height={30} width={30}>
+      <ContentLoader
+        backgroundColor={'#0b0e13'}
+        foregroundColor={'#161d26'}
+        height={30}
+        speed={1}
+        width={30}
+      >
         <rect height={30} rx={'4'} ry={'4'} width={30} x={'0'} y={'0'} />
       </ContentLoader>
     </Table.Cell>

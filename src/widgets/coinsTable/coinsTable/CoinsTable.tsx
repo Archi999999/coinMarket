@@ -20,7 +20,6 @@ type Props = {
   currentPage: number
   limit: number
   search: string
-  // data: CoinData[]
 } & Pick<TableHeaderProps, 'onSort' | 'sort'>
 
 export const CoinsTable: FC<Props> = ({ className, currentPage, limit, search, ...rest }) => {
@@ -54,7 +53,7 @@ export const CoinsTable: FC<Props> = ({ className, currentPage, limit, search, .
   )
 
   if (isError) {
-    return <Table.Empty>Error!</Table.Empty>
+    return <Table.Empty>Error: Data not available</Table.Empty>
   }
 
   return (
@@ -65,9 +64,7 @@ export const CoinsTable: FC<Props> = ({ className, currentPage, limit, search, .
           <TableContentLoader limit={limit} />
         ) : (
           sortCoinsData(data, sort as { direction: string; key: keyof CoinData }).map(coin => (
-            <>
-              <CoinRow coin={coin} key={coin.id} />
-            </>
+            <CoinRow coin={coin} key={coin.id} />
           ))
         )}
       </Table.Body>
