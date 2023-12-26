@@ -86,7 +86,7 @@
       display: none;
     }
 
-    svg:last-child {
+    .coinLoader:last-child {
       display: none;
     }
   }
@@ -98,7 +98,7 @@
       display: none;
     }
 
-    svg:not(:first-child) {
+    .coinLoader:not(:first-child) {
       display: none;
     }
   }
@@ -110,7 +110,7 @@
       display: none;
     }
 
-    svg {
+    .coinLoader {
       display: none;
     }
   }

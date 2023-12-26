@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 
+import { CoinData } from '@/entities/coin/model/services/coins'
 import { AddCoinModal } from '@/features/addCoinModal/ui/addCoinModal'
 import {
   CoinForModal,
@@ -8,7 +9,6 @@ import {
 import { Table } from '@/shared/ui/table'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
-import { CoinData } from '@/widgets/coinsTable/coinsTable/CoinsTable'
 
 import s from './CoinRow.module.scss'
 
