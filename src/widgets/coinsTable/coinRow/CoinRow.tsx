@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { CoinData } from '@/entities/coin/model/services/coins'
 import { AddCoinModal } from '@/features/addCoinModal/ui/addCoinModal'
@@ -18,9 +19,10 @@ type Props = {
 export const CoinRow: FC<Props> = ({ coin }) => {
   const [showAddCoinModal, setShowAddCoinModal] = useState<boolean>(false)
   const [currentCoin, setCurrentCoin] = useState<CoinForModal>({} as CoinForModal)
+  const navigate = useNavigate()
+
   const handleRowClick = (coin: CoinData) => {
-    //TODO navigate details
-    console.log(coin)
+    navigate(`/coin/${coin.id}`)
   }
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>, coin: CoinData) => {
