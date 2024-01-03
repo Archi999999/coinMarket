@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react'
 
 import { useGetCoinHistoryQuery } from '@/entities/coin/model/services/coins'
-import { Loader } from '@/shared/ui/loader/Loader'
+import { DiagramLoader } from '@/features/loader/OneCoinContentLoader'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 import {
   Area,
@@ -40,7 +40,7 @@ export const Diagram: FC<Props> = ({ amountDays, id }) => {
   })
 
   if (isLoading) {
-    return <Loader />
+    return <DiagramLoader />
   }
 
   if (error || !coinHistory) {

@@ -10,13 +10,13 @@ import { Table } from '@/shared/ui/table'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 
-import s from './showPortfolioModal.module.scss'
+import s from './showWalletModal.module.scss'
 
 type Props = {
-  setShowPortfolioModal: (showAddCoinModal: boolean) => void
-  showPortfolioModal: boolean
+  setShowWalletModal: (showAddCoinModal: boolean) => void
+  showWalletModal: boolean
 }
-export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortfolioModal }) => {
+export const ShowWalletModal: FC<Props> = ({ setShowWalletModal, showWalletModal }) => {
   const dispatch = useDispatch()
 
   const currentPortfolio = useSelector<RootState, CoinForModal[]>(state => state.portfolio)
@@ -26,10 +26,10 @@ export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortf
   }
 
   return (
-    <Modal setShowModal={setShowPortfolioModal} showModal={showPortfolioModal}>
+    <Modal setShowModal={setShowWalletModal} showModal={showWalletModal}>
       <div className={s.root}>
         <Typography className={s.title} variant={'extra_large_bold'}>
-          Your Portfolio:{' '}
+          Your Wallet:{' '}
         </Typography>
         {currentPortfolio.length === 0 ? (
           <Typography variant={'medium'}>
@@ -65,7 +65,7 @@ export const ShowPortfolioModal: FC<Props> = ({ setShowPortfolioModal, showPortf
         )}
         <Button
           onClick={() => {
-            setShowPortfolioModal(false)
+            setShowWalletModal(false)
           }}
           variant={'primary'}
         >

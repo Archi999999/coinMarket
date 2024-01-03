@@ -1,7 +1,9 @@
 import { FC, useCallback, useState } from 'react'
 
-import { CoinData } from '@/entities/coin/model/services/coins'
+import { CoinData, useGetCoinsQuery } from '@/entities/coin/model/services/coins'
+import { TableContentLoader } from '@/features/loader/TableContentLoader'
 import { Sort, Table, TableHeader, TableHeaderProps } from '@/shared/ui/table'
+import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
 import { CoinRow } from '@/widgets/coinsTable/coinRow/CoinRow'
 
 const columns = [
@@ -15,11 +17,23 @@ const columns = [
 
 type Props = {
   className: string
-  data: CoinData[]
+  currentPage: number
+  limit: number
+  search: string
 } & Pick<TableHeaderProps, 'onSort' | 'sort'>
 
-export const CoinsTable: FC<Props> = ({ className, data, ...rest }) => {
+export const CoinsTable: FC<Props> = ({ className, currentPage, limit, search, ...rest }) => {
   const [sort, setSort] = useState<Sort>({ direction: 'asc', key: 'rank' })
+
+  const offset = (currentPage - 1) * limit
+  const debouncedValue = useDebounce(search)
+  const {
+    data: coinData,
+    isError,
+    isLoading,
+  } = useGetCoinsQuery({ limit, offset, search: debouncedValue })
+  const data = coinData?.data
+
   const sortCoinsData = useCallback(
     (data: CoinData[], sort: { direction: string; key: keyof CoinData }) => {
       const { direction, key } = sort
@@ -38,17 +52,21 @@ export const CoinsTable: FC<Props> = ({ className, data, ...rest }) => {
     [data, sort]
   )
 
-  if (!data.length) {
-    return <Table.Empty>No content...</Table.Empty>
+  if (isError) {
+    return <Table.Empty>Error: Data not available</Table.Empty>
   }
 
   return (
     <Table.Root className={className}>
       <TableHeader columns={columns} {...rest} onSort={setSort} sort={sort} />
       <Table.Body>
-        {sortCoinsData(data, sort as { direction: string; key: keyof CoinData }).map(coin => (
-          <CoinRow coin={coin} key={coin.id} />
-        ))}
+        {isLoading || data === undefined ? (
+          <TableContentLoader limit={limit} />
+        ) : (
+          sortCoinsData(data, sort as { direction: string; key: keyof CoinData }).map(coin => (
+            <CoinRow coin={coin} key={coin.id} />
+          ))
+        )}
       </Table.Body>
     </Table.Root>
   )
