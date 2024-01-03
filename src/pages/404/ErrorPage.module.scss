@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  flex-direction: row;
+
+  max-width: 1200px;
+  margin-top: 30px;
+  padding: 20px;
+
+  .textButton {
+    flex: 1;
+    margin-left: 20px;
+    white-space: pre-line;
+  }
+
+  .image {
+    flex: 2;
+    margin-top: 30px;
+
+    imagecomponent {
+      width: 10px;
+      height: 80px;
+    }
+  }
+}
