@@ -30,7 +30,6 @@ export const CoinRow: FC<Props> = ({ coin }) => {
     setShowAddCoinModal(true)
     setCurrentCoin(convertToNeedFormat(coin))
   }
-
   return (
     <>
       {showAddCoinModal && (
@@ -48,7 +47,14 @@ export const CoinRow: FC<Props> = ({ coin }) => {
       >
         <Table.Cell>{coin.rank}</Table.Cell>
         <Table.Cell>{coin.symbol}</Table.Cell>
-        <Table.Cell>Logo</Table.Cell>
+        <Table.Cell>
+          <img
+            className={s.logo}
+            height={30}
+            src={`src/assets/logo/${coin.symbol.toUpperCase()}.png`}
+            alt="Coin Logo"
+          />
+        </Table.Cell>
         <Table.Cell>
           <Typography variant={'small'}>{abbreviateNumber(coin.priceUsd)}</Typography>
         </Table.Cell>
