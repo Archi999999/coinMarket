@@ -55,7 +55,7 @@ export const Diagram: FC<Props> = ({ amountDays, id }) => {
 
     return {
       date: interval === 'd1' ? `${day}.${month}` : `${hour}:00`,
-      priceUsd: el.priceUsd,
+      priceUsd: Number(el.priceUsd),
     }
   })
 
@@ -66,8 +66,7 @@ export const Diagram: FC<Props> = ({ amountDays, id }) => {
           <XAxis className={s.xAxis} dataKey={'date'} />
           <YAxis
             className={s.yAxis}
-            domain={['dataMin', 'dataMax']}
-            padding={{ bottom: 10, top: 10 }}
+            domain={[(dataMin: number) => dataMin * 0.95, (dataMax: number) => dataMax * 1.05]}
             tickFormatter={value => `$ ${abbreviateNumber(value)}`}
           />
           <Tooltip content={<CustomTooltip />} wrapperClassName={s.tooltip} />
