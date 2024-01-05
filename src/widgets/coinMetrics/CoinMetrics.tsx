@@ -35,7 +35,7 @@ export const CoinMetrics: FC<Props> = ({ data, setValueSelect, valueSelect }) =>
             alt={'Logo'}
             className={s.logo}
             height={30}
-            src={`../public/logo/${data.symbol.toUpperCase()}.png`}
+            src={`/logo/${data.symbol.toUpperCase()}.png`}
           />
         </div>
         <div className={s.name}>

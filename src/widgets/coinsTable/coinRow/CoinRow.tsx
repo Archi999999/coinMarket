@@ -53,7 +53,7 @@ export const CoinRow: FC<Props> = ({ coin }) => {
             alt={'Logo'}
             className={s.logo}
             height={30}
-            src={`public/logo/${coin.symbol.toUpperCase()}.png`}
+            src={`/logo/${coin.symbol.toUpperCase()}.png`}
           />
         </Table.Cell>
         <Table.Cell>
