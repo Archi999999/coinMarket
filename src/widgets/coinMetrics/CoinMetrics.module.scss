@@ -21,3 +21,10 @@
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
 }
+
+.logo {
+  margin-top: 8px;
+  margin-right: 8px;
+  background-color: var(--color-button-main);
+  border-radius: 50%;
+}

@@ -30,7 +30,14 @@ export const CoinMetrics: FC<Props> = ({ data, setValueSelect, valueSelect }) =>
   return (
     <div className={s.coinInfo}>
       <div className={s.iconSvgName}>
-        <div>SVG</div>
+        <div>
+          <img
+            alt={'Logo'}
+            className={s.logo}
+            height={30}
+            src={`../public/logo/${data.symbol.toUpperCase()}.png`}
+          />
+        </div>
         <div className={s.name}>
           <div>{data.name}</div>
           <div>{data.symbol}</div>
