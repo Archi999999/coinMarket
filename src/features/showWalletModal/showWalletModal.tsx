@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '@/app/providers/store/store'
-import { portfolioSlice } from '@/entities/coin/model/slice/portfolio.slice'
+import { walletSlice } from '@/entities/coin/model/slice/wallet.slice'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { Button } from '@/shared/ui/button'
 import { Modal } from '@/shared/ui/modal'
@@ -19,10 +19,10 @@ type Props = {
 export const ShowWalletModal: FC<Props> = ({ setShowWalletModal, showWalletModal }) => {
   const dispatch = useDispatch()
 
-  const currentPortfolio = useSelector<RootState, CoinForModal[]>(state => state.portfolio)
+  const currentWallet = useSelector<RootState, CoinForModal[]>(state => state.wallet)
 
   const removePurchase = (id: string) => {
-    dispatch(portfolioSlice.actions.removeCoin({ idCoin: id }))
+    dispatch(walletSlice.actions.removeCoin({ idCoin: id }))
   }
 
   return (
@@ -31,14 +31,14 @@ export const ShowWalletModal: FC<Props> = ({ setShowWalletModal, showWalletModal
         <Typography className={s.title} variant={'extra_large_bold'}>
           Your Wallet:{' '}
         </Typography>
-        {currentPortfolio.length === 0 ? (
+        {currentWallet.length === 0 ? (
           <Typography variant={'medium'}>
             Unfortunately, you have not purchased any coins yet
           </Typography>
         ) : (
           <Table.Root>
             <Table.Body className={s.tableBody}>
-              {currentPortfolio.map(coin => {
+              {currentWallet.map(coin => {
                 return (
                   <Table.Row className={s.tableRow} key={coin.idForModal}>
                     <Table.Cell className={s.coinInfo}>

@@ -5,7 +5,7 @@ import { useGetCoinQuery } from '@/entities/coin/model/services/coins'
 import { AddCoinModal } from '@/features/addCoinModal/ui/addCoinModal'
 import { convertToNeedFormat } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { Diagram } from '@/features/diagram/Diagram'
-import { OneCoinContentLoader } from '@/features/loader/OneCoinContentLoader'
+import { OneCoinContentLoader } from '@/features/loaders/OneCoinContentLoader'
 import { Button } from '@/shared/ui/button'
 import { CoinMetrics } from '@/widgets/coinMetrics/CoinMetrics'
 
@@ -35,7 +35,7 @@ export const OneCoin = () => {
 
   const coinData = data.data
 
-  const addCoinToPortfolio = () => {
+  const addCoinToWallet = () => {
     setShowAddCoinModal(true)
   }
 
@@ -56,7 +56,7 @@ export const OneCoin = () => {
             <Button onClick={() => navigate('/')} variant={'secondary'}>
               Back
             </Button>
-            <Button onClick={addCoinToPortfolio}>Buy</Button>
+            <Button onClick={addCoinToWallet}>Buy</Button>
           </div>
         </div>
       </div>

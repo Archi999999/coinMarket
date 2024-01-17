@@ -3,9 +3,9 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 const initialState = [] as CoinForModal[]
 
-export const portfolioSlice = createSlice({
+export const walletSlice = createSlice({
   initialState,
-  name: 'portfolio',
+  name: 'wallet',
   reducers: {
     addCoin: (state, action: PayloadAction<{ newCoin: CoinForModal }>) => {
       state.push(action.payload.newCoin)
@@ -16,6 +16,6 @@ export const portfolioSlice = createSlice({
   },
 })
 
-export const portfolioReducer = portfolioSlice.reducer
+export const walletReducer = walletSlice.reducer
 
-export const portfolioActions = portfolioSlice.actions
+export const walletActions = walletSlice.actions

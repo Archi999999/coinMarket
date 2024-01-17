@@ -1,16 +1,19 @@
 import ContentLoader from 'react-content-loader'
 
+import MobileLoader from '@/features/loaders/MobileLoader'
+
 import s from './loaders.module.scss'
 
 export const OneCoinContentLoader = () => {
   return (
-    <>
-      <div className={s.oneCoin}>
+    <div className={s.oneCoinLoader}>
+      <div className={s.coinMetric}>
         <LogoLoader />
         <CoinMetricLoader />
       </div>
       <DiagramLoader />
-    </>
+      <MobileLoader />
+    </div>
   )
 }
 
@@ -51,6 +54,7 @@ export const DiagramLoader = () => {
   return (
     <ContentLoader
       backgroundColor={'#0b0e13'}
+      className={s.diagram}
       foregroundColor={'#161d26'}
       speed={1}
       style={{ height: '280px', margin: 'auto', width: '431px' }}

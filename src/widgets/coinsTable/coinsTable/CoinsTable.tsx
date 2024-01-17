@@ -1,7 +1,7 @@
 import { FC, useCallback, useState } from 'react'
 
 import { CoinData, useGetCoinsQuery } from '@/entities/coin/model/services/coins'
-import { TableContentLoader } from '@/features/loader/TableContentLoader'
+import { TableContentLoader } from '@/features/loaders/TableContentLoader'
 import { Sort, Table, TableHeader, TableHeaderProps } from '@/shared/ui/table'
 import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
 import { CoinRow } from '@/widgets/coinsTable/coinRow/CoinRow'

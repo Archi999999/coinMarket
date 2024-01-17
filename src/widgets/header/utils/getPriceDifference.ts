@@ -4,7 +4,7 @@ import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
 
 export const getPriceDifference = (currentPrice: CoinForModal[], newPrice: CoinData[] = []) => {
   if (currentPrice.length === 0) {
-    return { delta: 'portfolio is empty', totalPrice: `` }
+    return { delta: 'wallet is empty', totalPrice: `` }
   }
 
   const totalPrice = currentPrice.reduce((acc: number, el: CoinForModal) => {

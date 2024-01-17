@@ -28,3 +28,18 @@
   background-color: var(--color-button-main);
   border-radius: 50%;
 }
+
+@media screen and (width<= 515px) {
+  .coinInfo {
+    display: block;
+  }
+
+  .iconSvgName {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    flex-direction: row;
+  }
+}

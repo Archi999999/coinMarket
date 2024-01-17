@@ -6,7 +6,7 @@ import { RootState } from '@/app/providers/store/store'
 import { Bitcoin } from '@/assets/icons/Bitcoin'
 import { useGetCoinsQuery, useGetSomeCoinsQuery } from '@/entities/coin/model/services/coins'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
-import { HeaderContentLoader } from '@/features/loader/HeaderContentLoader'
+import { HeaderContentLoader } from '@/features/loaders/HeaderContentLoader'
 import { ShowWalletModal } from '@/features/showWalletModal/showWalletModal'
 import { Typography } from '@/shared/ui/typography'
 import { abbreviateNumber } from '@/shared/utils/abbreviateNumber'
@@ -18,7 +18,7 @@ import s from './Header.module.scss'
 export const Header = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
-  const totalPrice = useSelector<RootState, CoinForModal[]>(state => state.portfolio)
+  const totalPrice = useSelector<RootState, CoinForModal[]>(state => state.wallet)
 
   const needCoins = getArrayOfUnique(totalPrice)
 

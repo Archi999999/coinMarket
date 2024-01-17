@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { portfolioSlice } from '@/entities/coin/model/slice/portfolio.slice'
+import { walletSlice } from '@/entities/coin/model/slice/wallet.slice'
 import { CoinForModal } from '@/features/addCoinModal/utils/convertToNeedFormat'
 import { InputNumber } from '@/features/inputNumber/InputNumber'
 import { Button } from '@/shared/ui/button'
@@ -18,8 +18,8 @@ type Props = {
 export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoinModal }) => {
   const [coinsQuantity, setCoinsQuantity] = useState(1)
   const dispatch = useDispatch()
-  const addCoinToPortfolio = () => {
-    dispatch(portfolioSlice.actions.addCoin({ newCoin: { ...coin, amountCoin: coinsQuantity } }))
+  const addCoinToWallet = () => {
+    dispatch(walletSlice.actions.addCoin({ newCoin: { ...coin, amountCoin: coinsQuantity } }))
     setShowAddCoinModal(false)
   }
 
@@ -27,11 +27,11 @@ export const AddCoinModal: FC<Props> = ({ coin, setShowAddCoinModal, showAddCoin
     <Modal setShowModal={setShowAddCoinModal} showModal={showAddCoinModal}>
       <div className={s.root}>
         <Typography className={s.title} variant={'extra_large_bold'}>
-          How many <span>{coin.nameCoin}</span> coins do you want to add to your Portfolio?
+          How many <span>{coin.nameCoin}</span> coins do you want to add to your wallet?
         </Typography>
         <InputNumber setValue={setCoinsQuantity} value={coinsQuantity} />
         <div className={s.buttons}>
-          <Button onClick={addCoinToPortfolio} variant={'primary'}>
+          <Button onClick={addCoinToWallet} variant={'primary'}>
             Confirm
           </Button>
           <Button
