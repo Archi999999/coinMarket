@@ -111,9 +111,20 @@
     a {
       display: none;
     }
-
-    .coinLoader {
-      display: none;
+  }
+}
+@media screen and (width<= 320px) {
+   .headerLogo{
+    :first-child{
+      display: none ;
     }
+  }
+  .headerCoins{
+    margin: 0;
+    padding: 0;
+  }
+  .headerWallet{
+    padding: 0;
+    margin: 0;
   }
 }

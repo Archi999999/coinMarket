@@ -19,10 +19,12 @@
   align-items: center;
   justify-content: center;
 
-  width: 480px;
+  width: 440px;
   padding: 10px;
 
   .title {
+    font-size: var(--font-size-xl);
+
     margin-top: 30px;
   }
 
@@ -30,17 +32,19 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-
+    align-items: flex-start;
     height: 350px;
+    width: auto;
 
     border-radius: 10px;
   }
 
   .tableRow {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin-right: 15px;
+    width: auto;
 
     &:hover {
       background-color: transparent;
@@ -50,6 +54,15 @@
   .data {
     display: flex;
     flex-direction: column;
+    width: 130px;
+    align-items: center;
+    margin-top: 5px;
+  }
+  .tableButton{
+    width: 90px;
+    margin-top: 5px;
+    margin-right: 10px;
+
   }
 
   .coinInfo {
@@ -58,8 +71,34 @@
     align-items: flex-start;
     width: 160px;
 
+
     span {
       white-space: nowrap;
+    }
+  }
+}
+@media screen and (width<= 450px) {
+  .root{
+    width: 100%;
+    .tableRow{
+      margin-right: 5px;
+    }
+    .coinInfo{
+      width: 110px;
+      padding-left: 10px;
+    }
+    .data{
+      width: 90px;
+    }
+    .tableButton{
+      width: 80px;
+      padding-left: 15px;
+
+    }
+  }
+  .coinName{
+    :nth-child(2){
+      display: none;
     }
   }
 }

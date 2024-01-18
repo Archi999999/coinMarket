@@ -42,9 +42,14 @@ export const ShowWalletModal: FC<Props> = ({ setShowWalletModal, showWalletModal
                 return (
                   <Table.Row className={s.tableRow} key={coin.idForModal}>
                     <Table.Cell className={s.coinInfo}>
+                      <div className={s.coinName}>
                       <Typography variant={'large_bold'}>
-                        {coin.nameCoin} ({coin.symbolCoin})
+                        {coin.nameCoin}
                       </Typography>
+                      <Typography variant={'large_bold'}>
+                        ({coin.symbolCoin})
+                      </Typography>
+                      </div>
                       <Typography as={'span'} variant={'medium'}>
                         Amount: {coin.amountCoin}
                       </Typography>
@@ -54,8 +59,8 @@ export const ShowWalletModal: FC<Props> = ({ setShowWalletModal, showWalletModal
                       <Typography variant={'medium'}>{coin.data.additionData}</Typography>
                       <Typography variant={'medium'}>{coin.data.additionTime}</Typography>
                     </Table.Cell>
-                    <Table.Cell>
-                      <Button onClick={() => removePurchase(coin.idForModal)}>Remove</Button>
+                    <Table.Cell className={s.tableButton}>
+                      <Button onClick={() => removePurchase(coin.idForModal)}>X</Button>
                     </Table.Cell>
                   </Table.Row>
                 )
