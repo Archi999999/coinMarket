@@ -1,14 +1,14 @@
 import { coinsReducer } from '@/entities/coin/model/slice/coin.slice'
-import { portfolioReducer } from '@/entities/coin/model/slice/portfolio.slice'
+import { walletReducer } from '@/entities/coin/model/slice/wallet.slice'
 import { baseAPI } from '@/shared/api/baseAPI'
 import { configureStore } from '@reduxjs/toolkit'
 
 let preloadedState
-const persistedPortfolioString = localStorage.getItem('portfolio')
+const persistedWalletString = localStorage.getItem('wallet')
 
-if (persistedPortfolioString) {
+if (persistedWalletString) {
   preloadedState = {
-    portfolio: JSON.parse(persistedPortfolioString),
+    wallet: JSON.parse(persistedWalletString),
   }
 }
 
@@ -19,11 +19,11 @@ export const store = configureStore({
   reducer: {
     [baseAPI.reducerPath]: baseAPI.reducer,
     coins: coinsReducer,
-    portfolio: portfolioReducer,
+    wallet: walletReducer,
   },
 })
 store.subscribe(() => {
-  localStorage.setItem('portfolio', JSON.stringify(store.getState().portfolio))
+  localStorage.setItem('wallet', JSON.stringify(store.getState().wallet))
 })
 
 export type AppDispatch = typeof store.dispatch

@@ -1,0 +1,29 @@
+
+.coinMetric {
+  height: 145px;
+  margin-bottom: 10px;
+}
+
+.mobileLoader {
+  display: none;
+}
+
+@media screen and (width<= 515px) {
+  .coinMetric {
+    display: none;
+  }
+
+  .mobileLoader {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .oneCoinLoader {
+    height: 582px;
+  }
+
+  .diagram {
+    display: none;
+  }
+}

@@ -21,7 +21,7 @@ export const Select: FC<Props> = ({ className, currentValue, options, setValue }
   }
 
   return (
-    <div className={`${s.div} ${className}`}>
+    <div className={`${s.dropdownContainer} ${className}`}>
       <select className={s.select} onChange={onSelectHandler} value={currentValue}>
         {options.map(option => (
           <option className={s.value} key={option.value} value={option.value}>
