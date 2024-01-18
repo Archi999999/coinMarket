@@ -7,80 +7,82 @@
   height: 80px;
 
   background-color: var(--color-background-black);
+}
 
-  .headerLogo {
-    display: flex;
-    flex-direction: row;
-    gap: 3px;
-    align-items: center;
+.headerLogo {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  align-items: center;
 
-    margin-left: 20px;
+  margin-left: 20px;
 
-    color: var(--color-button-main);
+  color: var(--color-button-main);
+  text-decoration: none;
+}
+
+.headerCoins {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  margin-right: 40px;
+  margin-left: 40px;
+
+  color: var(--color-text-green);
+
+  .coinLink {
     text-decoration: none;
-  }
 
-  .headerCoins {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: center;
-    justify-content: space-between;
+    .coin {
+      display: flex;
+      gap: 10px;
+      align-items: center;
 
-    width: 100%;
-    margin-right: 40px;
-    margin-left: 40px;
-
-    color: var(--color-text-green);
-
-    .coinLink {
-      text-decoration: none;
-
-      .coin {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-
-        &:hover {
-          color: var(--color-button-red);
-        }
+      &:hover {
+        color: var(--color-button-red);
       }
     }
   }
+}
 
-  .headerModal {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+.headerModal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 
-    padding: 20px 0;
-  }
+  padding: 20px 0;
+}
 
-  .headerWallet {
-    cursor: pointer;
+.headerWallet {
+  cursor: pointer;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    width: auto;
-    max-width: 380px;
-    height: 70%;
-    margin-right: 20px;
-    padding: 15px;
+  width: auto;
+  max-width: 380px;
+  height: 70%;
+  margin-right: 20px;
+  padding: 15px;
 
-    text-align: center;
 
-    border: 1px solid var(--color-button-main);
-    border-radius: 15px;
+  text-align: center;
 
-    span {
-      white-space: nowrap;
-    }
+  border: 1px solid var(--color-button-main);
+  border-radius: 15px;
+
+  span {
+    white-space: nowrap;
   }
 }
+
 
 @media screen and (width<= 770px) {
   .headerCoins {
@@ -108,23 +110,14 @@
 
 @media screen and (width<= 515px) {
   .headerCoins {
-    a {
-      display: none;
-    }
+    display: none;
   }
 }
 @media screen and (width<= 320px) {
-   .headerLogo{
-    :first-child{
-      display: none ;
+  .headerLogo {
+    :first-child {
+      display: none;
     }
-  }
-  .headerCoins{
-    margin: 0;
-    padding: 0;
-  }
-  .headerWallet{
-    padding: 0;
-    margin: 0;
+    margin-right: 5px;
   }
 }
