@@ -2,7 +2,7 @@ $background-color: #0caf60;
 
 .root {
   border-collapse: collapse;
-  width: 100%;
+  max-width: 100%;
 
   tbody tr:hover {
     cursor: pointer;
@@ -15,16 +15,51 @@ $background-color: #0caf60;
 }
 
 .headCell {
-  padding: 6px 24px;
   text-align: left;
 }
 
-.cell {
-  padding: 6px 24px;
-}
+//
+//.cell {
+//  padding: 6px 24px;
+//}
 
 .empty {
   display: grid;
   place-items: center;
   padding: 60px 0;
+}
+
+/* Медиа-запрос для экранов с шириной до 600 пикселей */
+@media (width <= 600px) {
+  .headCell {
+    padding: 4px;
+  }
+
+  .cell {
+    padding: 4px 6px;
+  }
+}
+
+/* Медиа-запрос для экранов с шириной от 601 пикселя и до 1200 пикселей */
+@media (width >= 601px) and (width <= 1200px) {
+  .headCell {
+    padding: 8px 18px;
+    text-align: center;
+  }
+
+  .cell {
+    padding: 8px 18px;
+  }
+}
+
+/* Медиа-запрос для экранов с шириной свыше 1200 пикселей */
+@media (width >= 1201px) {
+  .headCell {
+    padding: 6px 24px;
+    text-align: left;
+  }
+
+  .cell {
+    padding: 6px 24px;
+  }
 }

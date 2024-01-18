@@ -48,7 +48,7 @@ export const CoinRow: FC<Props> = ({ coin }) => {
       >
         <Table.Cell>{coin.rank}</Table.Cell>
         <Table.Cell>{coin.symbol}</Table.Cell>
-        <Table.Cell>
+        <Table.Cell className={s.cellLogo}>
           <img
             alt={'Logo'}
             className={s.logo}
