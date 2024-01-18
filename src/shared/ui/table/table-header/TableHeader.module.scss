@@ -23,3 +23,9 @@
     fill: var(--color-text-white);
   }
 }
+
+@media (width <= 480px) {
+  .visibleRow {
+    display: none;
+  }
+}

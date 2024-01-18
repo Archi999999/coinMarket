@@ -18,3 +18,9 @@
   background-color: var(--color-button-main);
   border-radius: 50%;
 }
+
+@media (width <= 480px) {
+  .cellLogo {
+    display: none;
+  }
+}

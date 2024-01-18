@@ -9,6 +9,7 @@ import { clsx } from 'clsx'
 import s from './TableHeader.module.scss'
 
 export type Column = {
+  isVisibleMobile?: boolean
   key: string
   sortable?: boolean
   title: string
@@ -43,8 +44,11 @@ export const TableHeader = ({ columns, onSort, sort, ...restProps }: TableHeader
   return (
     <Table.Head {...restProps}>
       <Table.Row>
-        {columns.map(({ key, sortable, title }) => {
-          const headCellClasses = clsx(sortable && s.activeHeadCell)
+        {columns.map(({ isVisibleMobile, key, sortable, title }) => {
+          const headCellClasses = clsx(
+            sortable && s.activeHeadCell,
+            isVisibleMobile && s.visibleRow
+          )
 
           return (
             <Table.HeadCell
