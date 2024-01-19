@@ -7,7 +7,7 @@ import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
 import { CoinRow } from '@/widgets/coinsTable/coinRow/CoinRow'
 
 const columns = [
-  { isVisibleMobile: true,key: 'rank', sortable: true, title: '#' },
+  { isVisibleMobile: true, key: 'rank', sortable: true, title: '#' },
   { key: 'symbol', sortable: false, title: 'Symbol' },
   { isVisibleMobile: true, key: 'logo', sortable: false, title: 'Logo' },
   { key: 'priceUsd', sortable: true, title: 'Price' },
