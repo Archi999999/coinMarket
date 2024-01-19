@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { CoinData } from '@/entities/coin/model/services/coins'
 import { CoinMetric } from '@/shared/ui/coinMetric/CoinMetric'
 import { Option, Select } from '@/shared/ui/select/Select'
+import { handleImageError } from '@/shared/utils/handleImageError'
 
 import s from './CoinMetrics.module.scss'
 
@@ -35,6 +36,7 @@ export const CoinMetrics: FC<Props> = ({ data, setValueSelect, valueSelect }) =>
             alt={'Logo'}
             className={s.logo}
             height={30}
+            onError={handleImageError}
             src={`/logo/${data.symbol.toUpperCase()}.png`}
           />
         </div>

@@ -2,13 +2,15 @@ import ContentLoader from 'react-content-loader'
 
 import { Table } from '@/shared/ui/table'
 
+import s from './loaders.module.scss'
+
 export const TableContentLoader = ({ limit }: { limit: number }) => {
   return Array.from({ length: limit }).map((_, index) => <RowLoader key={index} />)
 }
 
 export const RowLoader = () => {
   return (
-    <Table.Row>
+    <Table.Row className={s.tableRow}>
       <Content />
       <Content2 />
       <Content2 />
@@ -22,7 +24,7 @@ export const RowLoader = () => {
 
 const Content = () => {
   return (
-    <Table.Cell>
+    <Table.Cell className={s.tableContent}>
       <ContentLoader
         backgroundColor={'#0b0e13'}
         foregroundColor={'#161d26'}
@@ -38,7 +40,7 @@ const Content = () => {
 
 const Content2 = () => {
   return (
-    <Table.Cell>
+    <Table.Cell className={s.tableContent2}>
       <ContentLoader
         backgroundColor={'#0b0e13'}
         foregroundColor={'#161d26'}

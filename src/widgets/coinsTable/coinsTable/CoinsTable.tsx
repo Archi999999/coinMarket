@@ -7,12 +7,12 @@ import { useDebounce } from '@/shared/utils/hooks/useDebounce/useDebounce'
 import { CoinRow } from '@/widgets/coinsTable/coinRow/CoinRow'
 
 const columns = [
-  { key: 'rank', sortable: true, title: '#' },
+  { isVisibleMobile: true, key: 'rank', sortable: true, title: '#' },
   { key: 'symbol', sortable: false, title: 'Symbol' },
   { isVisibleMobile: true, key: 'logo', sortable: false, title: 'Logo' },
   { key: 'priceUsd', sortable: true, title: 'Price' },
   { key: 'marketCapUsd', sortable: true, title: 'Market Cap ' },
-  { key: 'volumeUsd24Hr', sortable: true, title: 'Volume(24h)' },
+  { key: 'volumeUsd24Hr', sortable: true, title: 'Volume (24h)' },
 ]
 
 type Props = {
