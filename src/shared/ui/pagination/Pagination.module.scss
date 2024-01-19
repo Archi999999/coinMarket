@@ -20,6 +20,7 @@
 }
 @media screen and (width<= 600px) {
   .pagination{
+    gap: 5px;
     .button{
       width: 20px;
       padding: 8px 10px 8px;

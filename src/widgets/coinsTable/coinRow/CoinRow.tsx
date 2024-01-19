@@ -48,7 +48,7 @@ export const CoinRow: FC<Props> = ({ coin }) => {
           handleRowClick(coin)
         }}
       >
-        <Table.Cell>{coin.rank}</Table.Cell>
+        <Table.Cell className={s.cellLogo}>{coin.rank}</Table.Cell>
         <Table.Cell>{coin.symbol}</Table.Cell>
         <Table.Cell className={s.cellLogo}>
           <img
