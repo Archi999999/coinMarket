@@ -15,31 +15,22 @@ $background-color: #0caf60;
 }
 
 .headCell {
-  text-align: left;
+  padding: 6px 24px;
+  text-align: center;
 }
-
-//
-//.cell {
-//  padding: 6px 24px;
-//}
 
 .empty {
   display: grid;
   place-items: center;
   padding: 60px 0;
 }
-/* Медиа-запрос для экранов с шириной свыше 1200 пикселей */
-@media (width >= 1201px) {
-  .headCell {
-    padding: 6px 24px;
-    text-align: left;
-  }
 
-  .cell {
-    padding: 6px 24px;
-  }
+.cell {
+  padding: 6px 24px;
+  text-align: center;
 }
-/* Медиа-запрос для экранов с шириной от 601 пикселя и до 1200 пикселей */
+
+
 @media (width >= 601px) and (width <= 1200px) {
   .headCell {
     padding: 8px 18px;
@@ -51,8 +42,6 @@ $background-color: #0caf60;
   }
 }
 
-
-/* Медиа-запрос для экранов с шириной до 600 пикселей */
 @media (width <= 600px) {
   .headCell {
     padding: 4px;

@@ -12,7 +12,7 @@ const columns = [
   { isVisibleMobile: true, key: 'logo', sortable: false, title: 'Logo' },
   { key: 'priceUsd', sortable: true, title: 'Price' },
   { key: 'marketCapUsd', sortable: true, title: 'Market Cap ' },
-  { key: 'volumeUsd24Hr', sortable: true, title: 'Volume(24h)' },
+  { key: 'volumeUsd24Hr', sortable: true, title: 'Volume (24h)' },
 ]
 
 type Props = {
