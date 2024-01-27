@@ -43,12 +43,8 @@ export const ShowWalletModal: FC<Props> = ({ setShowWalletModal, showWalletModal
                   <Table.Row className={s.tableRow} key={coin.idForModal}>
                     <Table.Cell className={s.coinInfo}>
                       <div className={s.coinName}>
-                      <Typography variant={'large_bold'}>
-                        {coin.nameCoin}
-                      </Typography>
-                      <Typography variant={'large_bold'}>
-                        ({coin.symbolCoin})
-                      </Typography>
+                        <Typography variant={'large_bold'}>{coin.nameCoin}</Typography>
+                        <Typography variant={'large_bold'}>({coin.symbolCoin})</Typography>
                       </div>
                       <Typography as={'span'} variant={'medium'}>
                         Amount: {coin.amountCoin}
